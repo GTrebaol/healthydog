@@ -1,0 +1,37 @@
+apply plugin: 'org.sonarqube'
+//SonarQube configuration.
+sonarqube {
+// TODO prendre en compte la flavor de :core pour "androidVariant" et "sonar.junit.reportsPath"
+//    def flavorName = ''
+//    if (project.hasProperty('flavor')) {
+//        //read the flavor from properties.
+//        flavorName = flavor
+//        androidVariant flavorName + "Debug"
+//    } else {
+//        androidVariant 'debug'
+//    }
+//    println "sonarqube   androidVariant: $androidVariant"
+    androidVariant 'dev'
+
+    properties {
+        // sonar local
+        // property 'sonar.host.url', 'http://localhost:9000'
+
+        property "sonar.projectName", "Test Poc coverage kotlin Android"
+        property "sonar.projectKey", "qualimetrie.android:poc.refonteapp.coverage"
+        property "sonar.java.source", "8"
+        property "sonar.sourceEncoding", "UTF-8"
+
+        property "sonar.junit.reportsPath", "${project.buildDir}/test-results/testDebugUnitTest"
+        //property "sonar.junit.reportsPath", "build/test-results/test" + flavorName.capitalize() + "UnitTest"
+
+        property "sonar.exclusions", "**/*.js,**/*.css,**/*.html,**/*.xml,**/*.jpg,**/*.png,**/*.PNG"
+
+        // Test coverage
+        property "sonar.java.coveragePlugin", "jacoco"
+        property "sonar.coverage.jacoco.xmlReportPaths", "${project.buildDir}/reports/jacoco/testDebugUnitTestCoverage/testDebugUnitTestCoverage.xml"
+
+        // Skip blame command
+        property 'sonar.scm.disabled', true
+    }
+}
