@@ -5,17 +5,17 @@ plugins {
 }
 
 android {
-    compileSdkVersion(AppConfig.compileSdk)
-    buildToolsVersion(AppConfig.buildToolsVersion)
+    compileSdkVersion(AppConfig.COMPILE_SDK_VERSION)
+    buildToolsVersion(AppConfig.BUILD_TOOLS_VERSION)
 
     defaultConfig {
         applicationId = "com.gtreb.healthydog"
-        minSdkVersion(AppConfig.minSdk)
-        targetSdkVersion(AppConfig.targetSdk)
-        versionCode = AppConfig.versionCode
-        versionName = AppConfig.versionName
+        minSdkVersion(AppConfig.MIN_SDK_VERSION)
+        targetSdkVersion(AppConfig.TARGET_SDK_VERSION)
+        versionCode = AppConfig.VERSION_CODE
+        versionName = AppConfig.VERSION_NAME
 
-        testInstrumentationRunner = AppConfig.androidTestInstrumentation
+        testInstrumentationRunner = AppConfig.TEST_INSTRUMENTATION_RUNNER
     }
 
     buildTypes {
@@ -28,15 +28,15 @@ android {
         }
     }
 
-    flavorDimensions(AppConfig.dimension)
+    flavorDimensions(AppConfig.DIMENSION)
     productFlavors {
         create("staging") {
             applicationIdSuffix = ".staging"
-            setDimension(AppConfig.dimension)
+            setDimension(AppConfig.DIMENSION)
         }
 
         create("production") {
-            setDimension(AppConfig.dimension)
+            setDimension(AppConfig.DIMENSION)
         }
     }
 
@@ -58,8 +58,19 @@ dependencies {
     //std lib
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
     //app libs
-    implementation(AppDependencies.appLibraries)
+    implementation(AppDependencies.Android.APP_COMPAT)
+    implementation(AppDependencies.Kotlin.KOTLIN_STDLIB_JDK_7)
+    implementation(AppDependencies.EventBus.LOCAL_BROADCAST_MANAGER)
+
+
+    implementation(AppDependencies.DependencyInjection.KOIN_CORE)
+    implementation(AppDependencies.DependencyInjection.KOIN_ANDROID_FRAGMENT)
+
+
+    implementation(AppDependencies.Asynchronous.COROUTINES_CORE)
+    implementation(AppDependencies.Asynchronous.COROUTINES_ANDROID)
+
+
     //test libs
-    testImplementation(AppDependencies.testLibraries)
-    androidTestImplementation(AppDependencies.androidTestLibraries)
+    testImplementation(AppDependencies.Testing.JUNIT5)
 }

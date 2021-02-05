@@ -1,13 +1,14 @@
 //app level config constants
 object AppConfig {
-    const val compileSdk = 30
-    const val minSdk = 21
-    const val targetSdk = 30
-    const val versionCode = 1
-    const val versionName = "1.0.0"
-    const val buildToolsVersion = "29.0.3"
 
-    const val androidTestInstrumentation = "androidx.test.runner.AndroidJUnitRunner"
-    const val proguardConsumerRules =  "consumer-rules.pro"
-    const val dimension = "environment"
+    val COMPILE_SDK_VERSION = 29
+    val MIN_SDK_VERSION = 23
+    val TARGET_SDK_VERSION = 29
+    val TEST_INSTRUMENTATION_RUNNER = "androidx.test.runner.AndroidJUnitRunner"
+    val NEXUS_URL = "http://scm.s.arkea.com:8080/nexus/content/repositories/arkea-internal/arkea/phenix"
+    val DIMENSION = "environment"
+    val BUILD_TOOLS_VERSION = "29.0.3"
+    val VERSION_NAME = "1.0.0"
+    val VERSION_CODE = 1
+
 }
