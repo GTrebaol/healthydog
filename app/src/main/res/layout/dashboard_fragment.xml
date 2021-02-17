@@ -5,6 +5,9 @@
 
         <import type="android.view.View" />
         <variable
+            name="lifecycle"
+            type="androidx.lifecycle.LifecycleOwner" />
+        <variable
             name="viewModel"
             type="com.gtreb.healthydog.dashboard.DashboardFragmentViewModel"/>
     </data>

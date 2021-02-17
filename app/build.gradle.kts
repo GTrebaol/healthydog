@@ -40,7 +40,9 @@ android {
         }
     }
 
+
     viewBinding {
+        android.buildFeatures.dataBinding = true
         android.buildFeatures.viewBinding = true
     }
 
@@ -59,7 +61,7 @@ dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
     //app libs
     implementation(AppDependencies.Android.APP_COMPAT)
-    kaptAndroidTest(AppDependencies.Android.DATABINDING)
+    implementation(AppDependencies.Android.DATABINDING)
     implementation(AppDependencies.Android.SECURITY_CRYPTO)
     implementation(AppDependencies.Android.DATABINDING_RUNTIME)
 

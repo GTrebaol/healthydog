@@ -10,18 +10,24 @@ import androidx.fragment.app.Fragment
 import com.gtreb.healthydog.common.navigation.NavigationItem
 import com.gtreb.healthydog.common.navigation.NavigationPublisher
 
+
 /**
  * Used by Router to navigate in Phenix Base.
  * Minimal screen portion.
  **/
-abstract class CustomFragment<viewBinding : ViewDataBinding> : Fragment() {
+abstract class CustomFragment<VB : ViewDataBinding> : Fragment() {
 
     /** The ViewDataBinding used by the view. */
-    lateinit var binding: viewBinding
+    lateinit var binding: VB
+    abstract val layoutId: Int
 
     protected open val navigationItem: NavigationItem? = null
     protected open val navigationPublisher by lazy { NavigationPublisher(requireContext()) { navigationItem } }
-    abstract val layoutId: Int
+
+    abstract fun bindViewModels(binding: VB)
+
+    open val lifecycleOwner get() = viewLifecycleOwner
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -29,9 +35,9 @@ abstract class CustomFragment<viewBinding : ViewDataBinding> : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = DataBindingUtil.inflate(inflater, layoutId, container, false)
-        binding.lifecycleOwner = lifecycle
-        binding.setVariable(BR.lifecycle, lifecycle)
-        lifecycle.addObserver(navigationPublisher)
+        binding.lifecycleOwner = lifecycleOwner
+        binding.setVariable(BR.lifecycle, lifecycleOwner)
+        lifecycleOwner.lifecycle.addObserver(navigationPublisher)
         bindViewModels(binding)
         return binding.root
     }
@@ -42,6 +48,4 @@ abstract class CustomFragment<viewBinding : ViewDataBinding> : Fragment() {
      * @return true when fragment consume the back
      **/
     open fun onBackPressed(): Boolean = false
-
-    abstract fun bindViewModels(binding: viewBinding)
 }
