@@ -7,11 +7,17 @@ import android.view.ViewGroup
 import com.gtreb.healthydog.R
 import com.gtreb.healthydog.common.implementation.CustomFragment
 import com.gtreb.healthydog.common.navigation.NavigationItem
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.koin.android.ext.android.inject
+import org.koin.android.viewmodel.ext.android.sharedViewModel
+import org.koin.java.KoinJavaComponent.inject
 
-class DashboardFragment : CustomFragment() {
+class DashboardFragment : CustomFragment<DashboardFragmentBinding>() {
 
     private val appCoordinator: DashboardCoordinator by inject()
+    val viewModel: DashboardFragmentViewModel by sharedViewModel()
+    override val layoutId: Int = R.layout.fragment_dashboard
+
     override val navigationItem: NavigationItem
         get() = NavigationItem(DashBoardModule::class, DashboardFragment::class)
 
@@ -22,5 +28,13 @@ class DashboardFragment : CustomFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
         super.onViewCreated(view, savedInstanceState)
+    }
+
+
+
+    @ExperimentalCoroutinesApi
+    override fun bindViewModels(binding: DashBoardFragmentBinding) {
+        binding.viewModel = viewModel
+        viewModel.fetch()
     }
 }

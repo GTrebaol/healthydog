@@ -6,6 +6,10 @@ object AppDependencies {
 
     object DependencyInjection {
         const val KOIN_CORE = "org.koin:koin-core:${Versions.DependencyInjection.KOIN}"
+        const val KOIN_ANDROID = "org.koin:koin-android:${Versions.DependencyInjection.KOIN}"
+        const val KOIN_ANDROID_SCOPE = "org.koin:koin-android-scope:${Versions.DependencyInjection.KOIN}"
+        const val KOIN_ANDROID_VIEWMODEL = "org.koin:koin-android-viewmodel:${Versions.DependencyInjection.KOIN}"
+        const val KOIN_ANDROID_EXT = "org.koin:koin-android-ext:${Versions.DependencyInjection.KOIN}"
         const val KOIN_ANDROID_FRAGMENT = "org.koin:koin-androidx-fragment:${Versions.DependencyInjection.KOIN}"
     }
 
@@ -17,6 +21,7 @@ object AppDependencies {
 
         // Databinding compiler
         const val DATABINDING = "com.android.databinding:compiler:${Versions.Android.DATABINDING}"
+        const val DATABINDING_RUNTIME = "androidx.databinding:databinding-runtime:${Versions.Android.DATABINDING_RUNTIME}"
 
     }
 

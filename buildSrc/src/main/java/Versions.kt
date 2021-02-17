@@ -9,9 +9,9 @@ object Versions {
     }
 
     object Android {
+        const val DATABINDING = "3.5.0"
+        const val DATABINDING_RUNTIME = "4.1.2"
         const val APP_COMPAT = "1.2.0-beta01"
-
-        // TODO: change with final version when available
         const val SECURITY_CRYPTO = "1.0.0-rc03"
     }
 

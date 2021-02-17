@@ -120,7 +120,7 @@ class Router : IRouter, KoinComponent {
     override fun doBack(): Int? {
         val (fragmentManager, _) = requireInit()
         val fragment = fragmentManager.fragments.lastOrNull()
-        if (fragment is CustomFragment && fragment.onBackPressed()) {
+        if (fragment is CustomFragment<*> && fragment.onBackPressed()) {
             return null
         } else {
             fragmentManager.popBackStackImmediate()
