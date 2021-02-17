@@ -1,5 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="error_occurred">Une erreur est survenue</string>
+
+    <string name="app_name">Healthy Dog</string>
+
+    <string name="back">Retour</string>
+    <string name="back_to_root">Retour racine</string>
+
+    <!-- Dashboard -->
+    <string name="dashboard_account">Go to account</string>
+
+    <string name="login_success">success</string>
+    <string name="login_failure">failure</string>
+    <string name="dialog">Dialog</string>
+    <string name="navigation">Navigation</string>
+
+    <!-- Navigation -->
+    <string name="navigation_authent">Authent</string>
+    <string name="navigation_open">Open</string>
+    <string name="navigation_force_open">Force open</string>
+    <string name="navigation_open_as_root">Open As Root</string>
+    <string name="navigation_dashboard">dashboard</string>
+    <string name="navigation_account">account</string>
+    <string name="navigation_account_inclusive">account inclusive</string>
+    <string name="navigation_utils">utils</string>
+
+    <string name="copy_label">Copier</string>
+    <string name="virtual_card_number_clipboard">Virtual Card Number</string>
+
+    <!-- Soon available -->
     <string name="soon_available">Bientôt disponible</string>
 </resources>

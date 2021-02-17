@@ -1,4 +1,4 @@
-package com.gtreb.healthydog.common
+package com.gtreb.healthydog.common.interfaces
 
 interface IModuleExit {
 

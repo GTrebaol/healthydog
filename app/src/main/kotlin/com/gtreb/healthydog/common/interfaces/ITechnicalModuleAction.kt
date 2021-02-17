@@ -1,4 +1,4 @@
-package com.gtreb.healthydog.common
+package com.gtreb.healthydog.common.interfaces
 
 /**
  * Interface that represents all the possible action of a technical module
@@ -22,7 +22,7 @@ abstract class ITechnicalModuleAction<T : ITechnicalModuleCallback> {
      * Remove a callback to the callbacks list
      * @param callback The callback to add, must be the same type T
      */
-    fun unregisterCallback(callback: T) {
+    private fun unregisterCallback(callback: T) {
         callbacks.remove(callback)
     }
 

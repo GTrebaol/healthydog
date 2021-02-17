@@ -1,7 +1,7 @@
 package com.gtreb.healthydog.dashboard
 
-import com.gtreb.healthydog.common.IModuleEntry
-import com.gtreb.healthydog.common.IModuleExit
+import com.gtreb.healthydog.common.interfaces.IModuleEntry
+import com.gtreb.healthydog.common.interfaces.IModuleExit
 
 object DashBoardModule {
     object Params {

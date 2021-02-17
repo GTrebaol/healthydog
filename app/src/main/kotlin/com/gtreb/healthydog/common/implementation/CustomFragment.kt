@@ -9,7 +9,7 @@ import com.gtreb.healthydog.common.navigation.NavigationPublisher
  * Used by Router to navigate in Phenix Base.
  * Minimal screen portion.
  **/
-abstract class CustomFragment : Fragment() {
+abstract class CustomFragment<ViewBinding : ViewDataBinding> : Fragment() {
 
     /**
      * Item published by [navigationPublisher]
@@ -28,4 +28,6 @@ abstract class CustomFragment : Fragment() {
      * @return true when fragment consume the back
      **/
     open fun onBackPressed(): Boolean = false
+
+    abstract fun bindViewModels(binding: VB)
 }

@@ -59,6 +59,10 @@ dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
     //app libs
     implementation(AppDependencies.Android.APP_COMPAT)
+    implementation(AppDependencies.Android.DATABINDING)
+    implementation(AppDependencies.Android.SECURITY_CRYPTO)
+
+
     implementation(AppDependencies.Kotlin.KOTLIN_STDLIB_JDK_7)
     implementation(AppDependencies.EventBus.LOCAL_BROADCAST_MANAGER)
 
@@ -67,8 +71,14 @@ dependencies {
     implementation(AppDependencies.DependencyInjection.KOIN_ANDROID_FRAGMENT)
 
 
+    implementation(AppDependencies.UI.CONSTRAINT_LAYOUT)
+    implementation(AppDependencies.UI.LOTTIE)
+
+
     implementation(AppDependencies.Asynchronous.COROUTINES_CORE)
     implementation(AppDependencies.Asynchronous.COROUTINES_ANDROID)
+
+    implementation(AppDependencies.Logging.TIMBER)
 
 
     //test libs
