@@ -16,7 +16,7 @@ import org.koin.java.KoinJavaComponent.inject
 class DashboardFragment : CustomFragment<DashboardFragmentBinding>() {
 
     private val appCoordinator: DashboardCoordinator by inject()
-    val viewModel: DashboardFragmentViewModel by sharedViewModel()
+    private val viewModel: DashboardFragmentViewModel by sharedViewModel()
     override val layoutId: Int = R.layout.dashboard_fragment
 
     override val navigationItem: NavigationItem
@@ -27,7 +27,6 @@ class DashboardFragment : CustomFragment<DashboardFragmentBinding>() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-
         super.onViewCreated(view, savedInstanceState)
     }
 

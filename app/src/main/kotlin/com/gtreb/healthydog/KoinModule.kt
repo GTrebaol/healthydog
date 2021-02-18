@@ -8,6 +8,7 @@ import com.gtreb.healthydog.common.implementation.TimberMonitor
 import com.gtreb.healthydog.common.interfaces.IKoinModule
 import com.gtreb.healthydog.common.interfaces.IRouter
 import com.gtreb.healthydog.dashboard.DashBoardModule
+import com.gtreb.healthydog.dashboard.DashboardCoordinator
 import com.gtreb.healthydog.exit.DashboardModuleExit
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.module.Module
@@ -51,6 +52,10 @@ object KoinModule : IKoinModule {
         }
     }
 
+    private val dashboardCoordinatorModule = module {
+        single { DashboardCoordinator(get(), get()) }
+    }
 
-    override val modules: List<Module> = listOf(monitorModule, routerModule, sharedPreferencesModule, navigationModule, exitModule)
+
+    override val modules: List<Module> = listOf(monitorModule, routerModule, sharedPreferencesModule, navigationModule, exitModule, dashboardCoordinatorModule)
 }
