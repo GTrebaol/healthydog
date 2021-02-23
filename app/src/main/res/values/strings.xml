@@ -30,4 +30,9 @@
 
     <!-- Soon available -->
     <string name="soon_available">Bientôt disponible</string>
+
+    <!-- Nav Bar items -->
+    <string name="home">Accueil</string>
+    <string name="help">Aide</string>
+    <string name="alert">Alertes</string>
 </resources>

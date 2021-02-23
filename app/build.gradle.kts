@@ -31,14 +31,14 @@ android {
 
     flavorDimensions(AppConfig.DIMENSION)
     productFlavors {
+        create("production") {
+            dimension = AppConfig.DIMENSION
+        }
         create("staging") {
             applicationIdSuffix = ".staging"
-            setDimension(AppConfig.DIMENSION)
+            dimension = AppConfig.DIMENSION
         }
 
-        create("production") {
-            setDimension(AppConfig.DIMENSION)
-        }
     }
 
 
@@ -55,6 +55,9 @@ android {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
 }
 
 dependencies {
@@ -62,9 +65,12 @@ dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
     //app libs
     implementation(AppDependencies.Android.APP_COMPAT)
+    implementation(AppDependencies.Android.ANDROIDX_CORE)
     implementation(AppDependencies.Android.DATABINDING)
     implementation(AppDependencies.Android.SECURITY_CRYPTO)
     implementation(AppDependencies.Android.DATABINDING_RUNTIME)
+    implementation(AppDependencies.Android.LIFECYCLE_LIVEDATA)
+    implementation(AppDependencies.Android.LIFECYCLE_VIEWMODEL)
 
 
     implementation(AppDependencies.Kotlin.KOTLIN_STDLIB_JDK_7)

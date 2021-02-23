@@ -9,6 +9,8 @@ object Versions {
     }
 
     object Android {
+        const val LIFECYCLE = "2.2.0"
+        const val ANDROIDX_CORE = "1.3.2"
         const val DATABINDING = "3.5.0"
         const val DATABINDING_RUNTIME = "4.1.2"
         const val APP_COMPAT = "1.2.0-beta01"
@@ -26,7 +28,6 @@ object Versions {
     object DependencyInjection {
         const val KOIN = "2.1.6"
     }
-
 
     object Testing {
         const val JUNIT5 = "5.7.0"
@@ -50,5 +51,4 @@ object Versions {
         const val FIREBASE_ML_VISION = "24.1.0"
         const val GOOGLE_SERVICES_VISON = "20.1.0"
     }
-
 }

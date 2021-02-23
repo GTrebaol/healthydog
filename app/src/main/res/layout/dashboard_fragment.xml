@@ -8,25 +8,29 @@
             name="lifecycle"
             type="androidx.lifecycle.LifecycleOwner" />
         <variable
-            name="viewModel"
+            name="viewModelDashBoard"
             type="com.gtreb.healthydog.dashboard.DashboardFragmentViewModel"/>
+
+        <variable
+            name="viewModelNavBar"
+            type="com.gtreb.healthydog.ui.navbar.NavBarFragmentViewModel" />
     </data>
 
-    <FrameLayout android:layout_height="match_parent"
-        android:layout_width="match_parent">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:orientation="vertical">
 
-        <com.airbnb.lottie.LottieAnimationView
-            android:id="@+id/loadingAnimation"
+
+        <com.gtreb.healthydog.ui.navbar.NavBarLayout
+            android:id="@+id/tabs"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:lottie_autoPlay="true"
-            app:lottie_loop="true"
-            app:lottie_rawRes="@raw/dog_loading"/>
+            android:layout_height="wrap_content"
+            app:lifecycle="@{lifecycle}"
+            app:viewData="@{viewModelNavBar.navs}"
+            app:layout_constraintBottom_toBottomOf="parent"/>
 
-    </FrameLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 </layout>

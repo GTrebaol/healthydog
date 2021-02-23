@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="lifecycle"
+            type="androidx.lifecycle.LifecycleOwner" />
+
+        <variable
+            name="viewData"
+            type="com.gtreb.healthydog.ui.navbar.NavBarItemViewData" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/nav_bar_item_holder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="@{viewData.clickable}"
+        android:clipToPadding="false"
+        android:contentDescription="@{viewData.accessibilityText}"
+        android:focusable="true"
+        android:onClick="@{() -> viewData.onClickListener.invoke()}"
+        android:paddingHorizontal="@dimen/margin_xsmall"
+        android:paddingVertical="@dimen/margin_medium"
+        app:nav_item_background="@{viewData.background}"
+        app:selected="@{viewData.selected}">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/menu_icon"
+            android:layout_width="@dimen/menu_large_icon_size"
+            android:layout_height="@dimen/menu_large_icon_size"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:nav_item_src="@{viewData.icon}"
+            tools:src="@tools:sample/avatars" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/menu_text"
+            style="@style/TextRegularSecondary"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/margin_large"
+            android:layout_marginTop="@dimen/margin_small"
+            android:gravity="center"
+            android:text="@{viewData.text}"
+            android:textSize="@dimen/text_size_regular"
+            app:autoSizeMaxTextSize="@dimen/text_size_regular"
+            app:autoSizeMinTextSize="@dimen/text_size_small"
+            app:autoSizeTextType="uniform"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/menu_icon"
+            tools:text="@tools:sample/lorem" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

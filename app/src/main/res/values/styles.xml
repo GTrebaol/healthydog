@@ -8,4 +8,12 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="TextRegular">
+        <item name="android:fontFamily">@font/mavenproregular</item>
+    </style>
+
+    <style name="TextRegularSecondary" parent="TextRegular">
+        <item name="android:textColor">@color/secondary</item>
+    </style>
+
 </resources>

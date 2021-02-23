@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ripple xmlns:android="http://schemas.android.com/apk/res/android"
+    android:color="@color/nav_bar_item_ripple">
+    <item>
+        <selector>
+            <item android:state_selected="true">
+                <layer-list>
+                    <item>
+                        <shape android:shape="rectangle">
+                            <solid android:color="@color/nav_bar_item_background_selected_stroke" />
+                        </shape>
+                    </item>
+                    <item android:top="2dp">
+                        <shape android:shape="rectangle">
+                            <solid android:color="@color/nav_bar_item_background_selected" />
+                        </shape>
+                    </item>
+                </layer-list>
+            </item>
+            <item android:state_selected="false">
+                <shape android:shape="rectangle">
+                    <solid android:color="@color/nav_bar_item_background_deselected" />
+                </shape>
+            </item>
+        </selector>
+    </item>
+</ripple>

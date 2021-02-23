@@ -19,7 +19,6 @@ class HealthyDogApplication : Application() {
             androidContext(this@HealthyDogApplication)
             fragmentFactory()
             modules(KoinModule.modules)
-            modules(KoinSubModuleDashboard.modules)
         }
     }
 }

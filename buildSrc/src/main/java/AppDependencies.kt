@@ -15,6 +15,9 @@ object AppDependencies {
 
     object Android {
         const val APP_COMPAT = "androidx.appcompat:appcompat:${Versions.Android.APP_COMPAT}"
+        const val ANDROIDX_CORE = "androidx.core:core-ktx:${Versions.Android.ANDROIDX_CORE}"
+        const val LIFECYCLE_LIVEDATA = "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.Android.LIFECYCLE}"
+        const val LIFECYCLE_VIEWMODEL = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.Android.LIFECYCLE}"
 
         // contains encrypted sharedPreferences
         const val SECURITY_CRYPTO = "androidx.security:security-crypto:${Versions.Android.SECURITY_CRYPTO}"

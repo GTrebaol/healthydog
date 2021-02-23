@@ -1,4 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- region Margins -->
     <dimen name="margin">8dp</dimen>
+    <dimen name="margin_xxxlarge">50dp</dimen>
+    <dimen name="margin_xxlarge">40dp</dimen>
+    <dimen name="margin_xlarge">30dp</dimen>
+    <dimen name="margin_large">20dp</dimen>
+    <dimen name="margin_medium">10dp</dimen>
+    <dimen name="margin_small">5dp</dimen>
+    <dimen name="margin_xsmall">2dp</dimen>
+    <dimen name="margin_none">0dp</dimen>
+    <!-- end region margins -->
+
+    <!-- region Text -->
+    <dimen name="text_size_very_big">18sp</dimen>
+    <dimen name="text_size_big">16sp</dimen>
+    <dimen name="text_size_medium">14sp</dimen>
+    <dimen name="text_size_regular">13sp</dimen>
+    <dimen name="text_size_small">10sp</dimen>
+    <!-- end region Text -->
+
+
+    <!-- region Icon Sizes -->
+    <dimen name="icon_size_small">16dp</dimen>
+    <dimen name="icon_size_medium">24dp</dimen>
+    <dimen name="icon_size_large">28dp</dimen>
+    <!-- end region Icon Sizes-->
+
+    <!-- region Menu -->
+    <dimen name="menu_spacer">15dp</dimen>
+    <dimen name="menu_padding_horizontal">@dimen/menu_spacer</dimen>
+    <dimen name="menu_padding_vertical">@dimen/margin_medium</dimen>
+    <dimen name="menu_icon_size">@dimen/icon_size_medium</dimen>
+    <dimen name="menu_large_icon_size">@dimen/icon_size_large</dimen>
+    <dimen name="menu_item_list_background_stroke">1dp</dimen>
+    <dimen name="menu_right_size">15dp</dimen>
+    <dimen name="menu_text_min_width">80dp</dimen>
+    <dimen name="menu_sub_text_min_width">140dp</dimen>
+    <dimen name="menu_bullet_size">60dp</dimen>
+    <!-- @dimen/icon_size_large + @dimen/margin_small * 2 -->
+    <dimen name="menu_icon_social_size">36dp</dimen>
+    <dimen name="menu_icon_social_divider">40dp</dimen>
+    <!-- endregion Menu -->
 </resources>

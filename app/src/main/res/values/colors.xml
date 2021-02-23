@@ -1,6 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="white">#FFFFFF</color>
+    <color name="oldBrick">#961D1F</color>
+    <color name="brightRed">#B30000</color>
+    <color name="persianRed">#D42D2E</color>
+    <color name="coral">#E03136</color>
+    <color name="carnation">#F4575B</color>
+    <color name="geraldine">#FE8184</color>
+    <color name="tundora">#444444</color>
+    <color name="doveGray">#6A6A6A</color>
+    <color name="dustyGray">#979797</color>
+    <color name="silver">#CDCBCB</color>
+    <color name="mercury">#E6E6E6</color>
+    <color name="wildSand">#F4F4F4</color>
+    <color name="malachite">#00C222</color>
+    <color name="green">#1B8900</color>
+    <color name="treePoppy">#FA9F1D</color>
+    <color name="redViolet">#B51F82</color>
+    <color name="pear">#CADB2B</color>
+    <color name="bondiBlue">#009FB8</color>
+
     <color name="colorPrimary">#620000</color>
     <color name="colorPrimaryDark">#370000</color>
     <color name="colorAccent">#330000</color>
+
+    <color name="secondary">@color/tundora</color>
+    <color name="secondary_darker">@color/doveGray</color>
+    <color name="secondary_dark">@color/dustyGray</color>
+    <color name="secondary_medium">@color/silver</color>
+    <color name="secondary_light">@color/mercury</color>
+    <color name="secondary_lighter">@color/wildSand</color>
+
+
+    <color name="transparent">#00000000</color>
+
+
+
+    <color name="nav_bar_item_ripple">@color/colorAccent</color>
+    <color name="nav_bar_item_background_selected_stroke">@color/colorPrimary</color>
+    <color name="nav_bar_item_background_selected">@color/white</color>
+    <color name="nav_bar_item_background_deselected">@color/white</color>
 </resources>
