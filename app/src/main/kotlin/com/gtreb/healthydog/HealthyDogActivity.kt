@@ -19,7 +19,6 @@ class HealthyDogActivity : CustomActivity<HealthyDogActivityBinding>() {
     private val viewModel: HealthyDogActivityViewModel by viewModel()
     override val layoutId: Int = R.layout.healthy_dog_activity
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         supportActionBar?.hide()
         super.onCreate(savedInstanceState)
