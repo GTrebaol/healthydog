@@ -10,10 +10,6 @@
         <variable
             name="viewModelDashBoard"
             type="com.gtreb.healthydog.dashboard.DashboardFragmentViewModel"/>
-
-        <variable
-            name="viewModelNavBar"
-            type="com.gtreb.healthydog.ui.navbar.NavBarFragmentViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -25,20 +21,12 @@
             android:id="@+id/loadingAnimation"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:layout_constraintEnd_toStartOf="@+id/tabs"
+            app:layout_constraintEnd_toStartOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:lottie_autoPlay="true"
             app:lottie_loop="true"
             app:lottie_rawRes="@raw/dog_loading"/>
-
-        <com.gtreb.healthydog.ui.navbar.NavBarLayout
-            android:id="@+id/tabs"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:lifecycle="@{lifecycle}"
-            app:viewData="@{viewModelNavBar.navs}"
-            app:layout_constraintBottom_toBottomOf="parent"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

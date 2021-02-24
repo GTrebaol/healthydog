@@ -9,7 +9,6 @@ class NavBarLayoutData {
         class External(index: Int) : Event(index)
     }
 
-
     val selected = MutableStateFlow<Event>(Event.External(0))
 
     /** List of navItem to show on screen */

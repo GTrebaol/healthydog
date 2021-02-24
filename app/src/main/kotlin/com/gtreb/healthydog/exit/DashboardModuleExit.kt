@@ -1,14 +1,14 @@
 package com.gtreb.healthydog.exit
 
 import com.gtreb.healthydog.AppCoordinator
-import com.gtreb.healthydog.dashboard.DashBoardModule
+import com.gtreb.healthydog.dashboard.DashboardModule
 
 /**
- * Exit points of [DashBoardModule]
+ * Exit points of [DashboardModule]
  */
 class DashboardModuleExit(
     private val coordinator: AppCoordinator
-) : DashBoardModule.ModuleExit {
+) : DashboardModule.ModuleExit {
 
     override fun exitToOtherAccounts(arguments: Map<String, Any?>) {
         TODO("Not yet implemented")

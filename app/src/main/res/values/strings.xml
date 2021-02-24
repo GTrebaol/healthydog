@@ -32,7 +32,23 @@
     <string name="soon_available">Bientôt disponible</string>
 
     <!-- Nav Bar items -->
-    <string name="home">Accueil</string>
-    <string name="help">Aide</string>
-    <string name="alert">Alertes</string>
+    <string name="navigation_home">Accueil</string>
+    <string name="navigation_evolution">Évolution</string>
+    <string name="navigation_calendar">Calendrier</string>
+    <string name="navigation_barf_food">Calcul BARF</string>
+    <string name="navigation_emergency_vet">Vétérinaire</string>
+
+
+    <string name="accessibility_navigation_home">@string/navigation_home</string>
+    <string name="accessibility_navigation_evolution">@string/navigation_evolution</string>
+    <string name="accessibility_navigation_calendar">@string/navigation_calendar</string>
+    <string name="accessibility_navigation_barf_food">@string/navigation_barf_food</string>
+    <string name="accessibility_navigation_emergency_vet">@string/navigation_emergency_vet</string>
+
+
+    <string name="test_navigation_home">@string/navigation_home</string>
+    <string name="test_navigation_evolution">@string/navigation_evolution</string>
+    <string name="test_navigation_calendar">@string/navigation_calendar</string>
+    <string name="test_navigation_barf_food">@string/navigation_barf_food</string>
+    <string name="test_navigation_emergency_vet">@string/navigation_emergency_vet</string>
 </resources>

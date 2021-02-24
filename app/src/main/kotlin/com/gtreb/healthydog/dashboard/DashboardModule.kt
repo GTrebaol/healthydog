@@ -3,7 +3,7 @@ package com.gtreb.healthydog.dashboard
 import com.gtreb.healthydog.common.interfaces.IModuleEntry
 import com.gtreb.healthydog.common.interfaces.IModuleExit
 
-object DashBoardModule {
+object DashboardModule {
     object Params {
         const val CONTEXT = "DashBoardModule.Context"
         const val PHONE_NUMBER = "DashBoardModule.PhoneNumber"
@@ -15,8 +15,6 @@ object DashBoardModule {
     }
 
     interface ModuleExit : IModuleExit {
-
-
         fun exitToOtherAccounts(arguments: Map<String, Any?> = mapOf())
 
     }

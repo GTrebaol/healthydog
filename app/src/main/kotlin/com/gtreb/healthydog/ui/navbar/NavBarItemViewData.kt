@@ -23,4 +23,5 @@ class NavBarItemViewData {
     var onClickListener: () -> Unit = {}
 
     val accessibilityText = MutableLiveData<String>(DEFAULT_TEXT)
+    val testId = MutableLiveData<String>()
 }

@@ -7,12 +7,16 @@ import com.gtreb.healthydog.common.implementation.Router
 import com.gtreb.healthydog.common.implementation.TimberMonitor
 import com.gtreb.healthydog.common.interfaces.IKoinModule
 import com.gtreb.healthydog.common.interfaces.IRouter
-import com.gtreb.healthydog.dashboard.DashBoardModule
+import com.gtreb.healthydog.common.navigation.DefaultDispatcherService
+import com.gtreb.healthydog.common.navigation.IDispatcherService
+import com.gtreb.healthydog.common.navigation.NavigationViewData
+import com.gtreb.healthydog.dashboard.DashboardModule
 import com.gtreb.healthydog.dashboard.DashboardCoordinator
 import com.gtreb.healthydog.dashboard.KoinSubModuleDashboard
 import com.gtreb.healthydog.exit.DashboardModuleExit
-import com.gtreb.healthydog.ui.navbar.KoinSubModuleNavBar
+import com.gtreb.healthydog.ui.logic.HealthyDogActivityViewModel
 import org.koin.android.ext.koin.androidContext
+import org.koin.android.viewmodel.dsl.viewModel
 import org.koin.core.module.Module
 import org.koin.dsl.module
 
@@ -39,12 +43,13 @@ object KoinModule : IKoinModule {
     }
 
     private val navigationModule = module {
-        single { AppCoordinator(get()) }
-        single { ActivityHolder(get()) }
+        single { AppCoordinator(get(), get()) }
+        viewModel { HealthyDogActivityViewModel(get(), get(), get(), get()) }
+        single { NavigationViewData(get())}
     }
 
     private val exitModule = module {
-        single<DashBoardModule.ModuleExit> { DashboardModuleExit(get()) }
+        single<DashboardModule.ModuleExit> { DashboardModuleExit(get()) }
         single<SharedPreferences.Editor> { get<SharedPreferences>().edit() }
     }
 
@@ -54,17 +59,17 @@ object KoinModule : IKoinModule {
         }
     }
 
-    private val commonModules = module {
-        single { }
-    }
-
     private val dashboardCoordinatorModule = module {
         single { DashboardCoordinator(get(), get()) }
     }
 
+    private val dispatcherModule = module {
+            single<IDispatcherService>(IDispatcherService.Default) { DefaultDispatcherService() }
+            single<IDispatcherService> { get(IDispatcherService.Default) }
+    }
 
 
-    override val modules: List<Module> = listOf(monitorModule, routerModule, sharedPreferencesModule, navigationModule, exitModule, dashboardCoordinatorModule)
+
+    override val modules: List<Module> = listOf(monitorModule, routerModule, sharedPreferencesModule, navigationModule, exitModule, dashboardCoordinatorModule, dispatcherModule)
         .plus(KoinSubModuleDashboard.modules)
-        .plus(KoinSubModuleNavBar.modules)
 }

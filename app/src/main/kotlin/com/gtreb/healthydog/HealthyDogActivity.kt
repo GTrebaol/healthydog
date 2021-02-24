@@ -1,29 +1,31 @@
 package com.gtreb.healthydog
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.Observer
+import com.gtreb.healthydog.common.implementation.CustomActivity
 import com.gtreb.healthydog.common.interfaces.IRouter
 import com.gtreb.healthydog.common.navigation.NavigationListener
+import com.gtreb.healthydog.databinding.HealthyDogActivityBinding
+import com.gtreb.healthydog.ui.logic.HealthyDogActivityViewModel
 import org.koin.android.ext.android.inject
+import org.koin.android.viewmodel.ext.android.viewModel
 import org.koin.androidx.fragment.android.setupKoinFragmentFactory
 
-class HealthyDogActivity : AppCompatActivity() {
+class HealthyDogActivity : CustomActivity<HealthyDogActivityBinding>() {
 
     private val router: IRouter by inject()
     private val coordinator: AppCoordinator by inject()
     private val navigationListener by lazy { NavigationListener(this) }
-    private val isLoading: Boolean = true
+    private val viewModel: HealthyDogActivityViewModel by viewModel()
+    override val layoutId: Int = R.layout.healthy_dog_activity
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setupKoinFragmentFactory()
-        setContentView(R.layout.activity_main)
         lifecycle.addObserver(navigationListener)
         navigationListener.displayed.observe(
             this,
-            Observer {
+            {
                 println("Navigation : ${it.toList().joinToString { "${it.first} - ${it.second}" }}")
             }
         )
@@ -46,5 +48,9 @@ class HealthyDogActivity : AppCompatActivity() {
     override fun onBackPressed() {
         router.doBack()
         if (router.isEmpty()) super.onBackPressed()
+    }
+
+    override fun bindViewModels(binding: HealthyDogActivityBinding) {
+        binding.viewModel = viewModel
     }
 }
