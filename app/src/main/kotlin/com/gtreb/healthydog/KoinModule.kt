@@ -13,7 +13,11 @@ import com.gtreb.healthydog.common.navigation.NavigationViewData
 import com.gtreb.healthydog.dashboard.DashboardModule
 import com.gtreb.healthydog.dashboard.DashboardCoordinator
 import com.gtreb.healthydog.dashboard.KoinSubModuleDashboard
+import com.gtreb.healthydog.evolution.EvolutionCoordinator
+import com.gtreb.healthydog.evolution.EvolutionModule
+import com.gtreb.healthydog.evolution.KoinSubModuleEvolution
 import com.gtreb.healthydog.exit.DashboardModuleExit
+import com.gtreb.healthydog.exit.EvolutionModuleExit
 import com.gtreb.healthydog.ui.logic.HealthyDogActivityViewModel
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.viewmodel.dsl.viewModel
@@ -50,6 +54,7 @@ object KoinModule : IKoinModule {
 
     private val exitModule = module {
         single<DashboardModule.ModuleExit> { DashboardModuleExit(get()) }
+        single<EvolutionModule.ModuleExit> { EvolutionModuleExit(get()) }
         single<SharedPreferences.Editor> { get<SharedPreferences>().edit() }
     }
 
@@ -59,8 +64,9 @@ object KoinModule : IKoinModule {
         }
     }
 
-    private val dashboardCoordinatorModule = module {
+    private val coordinatorsModule = module {
         single { DashboardCoordinator(get(), get()) }
+        single { EvolutionCoordinator(get(), get()) }
     }
 
     private val dispatcherModule = module {
@@ -70,6 +76,7 @@ object KoinModule : IKoinModule {
 
 
 
-    override val modules: List<Module> = listOf(monitorModule, routerModule, sharedPreferencesModule, navigationModule, exitModule, dashboardCoordinatorModule, dispatcherModule)
+    override val modules: List<Module> = listOf(monitorModule, routerModule, sharedPreferencesModule, navigationModule, exitModule, coordinatorsModule, dispatcherModule)
         .plus(KoinSubModuleDashboard.modules)
+        .plus(KoinSubModuleEvolution.modules)
 }

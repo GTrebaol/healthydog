@@ -37,6 +37,7 @@ object AppDependencies {
     object UI {
         const val CONSTRAINT_LAYOUT = "androidx.constraintlayout:constraintlayout:${Versions.UI.CONSTRAINT_LAYOUT}"
         const val LOTTIE = "com.airbnb.android:lottie:${Versions.UI.LOTTIE}"
+        const val GRAPH = "com.github.PhilJay:MPAndroidChart:${Versions.UI.CHART}"
     }
 
 

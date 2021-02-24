@@ -87,6 +87,7 @@ dependencies {
 
     implementation(AppDependencies.UI.CONSTRAINT_LAYOUT)
     implementation(AppDependencies.UI.LOTTIE)
+    implementation(AppDependencies.UI.GRAPH)
 
 
     implementation(AppDependencies.Asynchronous.COROUTINES_CORE)

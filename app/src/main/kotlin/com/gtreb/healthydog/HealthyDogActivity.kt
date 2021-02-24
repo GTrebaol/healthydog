@@ -1,6 +1,7 @@
 package com.gtreb.healthydog
 
 import android.os.Bundle
+import android.view.Window
 import com.gtreb.healthydog.common.implementation.CustomActivity
 import com.gtreb.healthydog.common.interfaces.IRouter
 import com.gtreb.healthydog.common.navigation.NavigationListener
@@ -20,6 +21,7 @@ class HealthyDogActivity : CustomActivity<HealthyDogActivityBinding>() {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        supportActionBar?.hide()
         super.onCreate(savedInstanceState)
         setupKoinFragmentFactory()
         lifecycle.addObserver(navigationListener)

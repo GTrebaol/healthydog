@@ -1,9 +1,9 @@
 //app level config constants
 object AppConfig {
 
-    const val COMPILE_SDK_VERSION = 29
+    const val COMPILE_SDK_VERSION = 30
     const val MIN_SDK_VERSION = 25
-    const val TARGET_SDK_VERSION = 29
+    const val TARGET_SDK_VERSION = 30
     const val TEST_INSTRUMENTATION_RUNNER = "androidx.test.runner.AndroidJUnitRunner"
     const val DIMENSION = "environment"
     const val BUILD_TOOLS_VERSION = "29.0.3"

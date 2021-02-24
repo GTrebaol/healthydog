@@ -37,6 +37,7 @@ object Versions {
     object UI {
         const val CONSTRAINT_LAYOUT = "2.0.0-beta6"
         const val LOTTIE = "3.0.0"
+        const val CHART = "3.1.0"
     }
 
     object Logging {
