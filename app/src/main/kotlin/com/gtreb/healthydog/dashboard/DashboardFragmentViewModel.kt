@@ -13,15 +13,5 @@ class DashboardFragmentViewModel (
     application: Application,
 ) : AndroidViewModel(application) {
 
-    private val isLoading = MutableLiveData<Boolean>().apply { value = false }
-    val liveIsLoading: LiveData<Boolean> = isLoading
-
-
-    fun load() {
-        isLoading.value = true
-        Handler().postDelayed({
-            isLoading.postValue(false)
-        }, 2000)
-    }
 
 }

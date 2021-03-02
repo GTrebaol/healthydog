@@ -15,7 +15,8 @@ android {
         targetSdkVersion(AppConfig.TARGET_SDK_VERSION)
         versionCode = AppConfig.VERSION_CODE
         versionName = AppConfig.VERSION_NAME
-
+        manifestPlaceholders["API_KEY"] = "YOUR_API_KEY"
+        buildConfigField("String", "API_KEY", "\"YOUR_API_KEY\"")
         testInstrumentationRunner = AppConfig.TEST_INSTRUMENTATION_RUNNER
     }
 
@@ -84,10 +85,12 @@ dependencies {
     implementation(AppDependencies.DependencyInjection.KOIN_ANDROID_EXT)
     implementation(AppDependencies.DependencyInjection.KOIN_ANDROID_SCOPE)
 
+    implementation(AppDependencies.Network.RETROFIT)
 
     implementation(AppDependencies.UI.CONSTRAINT_LAYOUT)
     implementation(AppDependencies.UI.LOTTIE)
     implementation(AppDependencies.UI.GRAPH)
+    implementation(AppDependencies.UI.GOOGLE_PLACES)
 
 
     implementation(AppDependencies.Asynchronous.COROUTINES_CORE)

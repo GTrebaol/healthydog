@@ -1,5 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.gtreb.healthydog">
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.gtreb.healthydog">
+
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" tools:node="remove"/>
 
     <application
         android:name=".HealthyDogApplication"
@@ -9,10 +12,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <meta-data android:name="com.google.android.geo.API_KEY" android:value="${API_KEY}"/>
         <activity android:name=".HealthyDogActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

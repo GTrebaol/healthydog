@@ -1,4 +1,4 @@
-package com.gtreb.healthydog.evolution
+package com.gtreb.healthydog.veterinaire
 
 import android.app.Application
 import android.content.Context
@@ -7,9 +7,9 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 
-class EvolutionFragmentViewModel (
+class VeterinaireFragmentViewModel (
     private val context: Context,
-    private val coordinator: EvolutionCoordinator,
+    private val coordinator: VeterinaireCoordinator,
     application: Application,
 ) : AndroidViewModel(application) {
 

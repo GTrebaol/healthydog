@@ -33,11 +33,16 @@ object AppDependencies {
         const val COROUTINES_CORE = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.Asynchronous.COROUTINES}"
     }
 
-
     object UI {
         const val CONSTRAINT_LAYOUT = "androidx.constraintlayout:constraintlayout:${Versions.UI.CONSTRAINT_LAYOUT}"
         const val LOTTIE = "com.airbnb.android:lottie:${Versions.UI.LOTTIE}"
         const val GRAPH = "com.github.PhilJay:MPAndroidChart:${Versions.UI.CHART}"
+        const val GOOGLE_PLACES = "com.google.android.libraries.places:places:${Versions.UI.GOOGLE_PLACES}"
+    }
+
+
+    object Network {
+        const val RETROFIT = "com.squareup.retrofit2:retrofit:${Versions.Network.RETROFIT}"
     }
 
 
