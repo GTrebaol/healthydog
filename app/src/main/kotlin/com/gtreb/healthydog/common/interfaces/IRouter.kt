@@ -6,11 +6,6 @@ import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
 import com.gtreb.healthydog.common.toBundle
 
-/**
- * This interface is used to handle framework navigation.
- * It uses the PhenixFragment
- * The initialize method is completely custom
- */
 interface IRouter {
 
     companion object {

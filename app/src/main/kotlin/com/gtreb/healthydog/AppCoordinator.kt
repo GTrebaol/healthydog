@@ -11,7 +11,6 @@ import org.koin.core.inject
 
 class AppCoordinator(private val context: Context, private val router: IRouter) : KoinComponent {
 
-    //private val authentication: AuthenticationModule.ModuleEntry by inject()
     private val dashboard: DashboardModule.ModuleEntry by inject()
     private val evolution: EvolutionModule.ModuleEntry by inject()
     private val veterinaire: VeterinaireModule.ModuleEntry by inject()

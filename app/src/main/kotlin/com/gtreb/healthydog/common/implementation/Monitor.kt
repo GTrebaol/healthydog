@@ -1,6 +1,5 @@
 package com.gtreb.healthydog.common.implementation
 
-
 import android.annotation.SuppressLint
 import android.util.Log
 import com.gtreb.healthydog.BuildConfig
@@ -8,7 +7,6 @@ import com.gtreb.healthydog.common.interfaces.ITechnicalModuleAction
 import com.gtreb.healthydog.common.interfaces.ITechnicalModuleCallback
 import timber.log.Timber
 import timber.log.Timber.DebugTree
-
 
 open class MyDebugTree : DebugTree() {
 
@@ -32,28 +30,11 @@ open class MyDebugTree : DebugTree() {
     }
 }
 
-/**
- * Define all the technical entry points for logging
- * No callbacks needed for logging
- */
+
 abstract class LoggingAction : ITechnicalModuleAction<LoggingCallback>() {
-    /**
-     * Print the message in parameter in the logcat in verbose mode
-     * @param message the messaged printed
-     */
+
     abstract fun logV(message: String)
-
-    /**
-     * Print the message in parameter in the logcat in debug mode
-     * @param message the messaged printed
-     */
     abstract fun logD(message: String)
-
-    /**
-     * Print the message and throwable in parameter in the logcat in error mode
-     * @param message the messaged printed
-     * @param throwable the Throwable printed
-     */
     abstract fun logE(message: String, throwable: Throwable? = null)
 }
 
@@ -67,9 +48,6 @@ class TimberMonitor : LoggingAction() {
     }
 
     init {
-        /**
-         * Always plant the tree for error purpose
-         */
         Timber.tag(TAG)
         Timber.plant(MyDebugTree())
     }

@@ -13,5 +13,4 @@ interface GoogleMapsApi {
         @Path("radius") longitude : Int,
         @Path("type") shopType : String,
         @Path("api_key") apiKey : String) : Call<GooglePlaceResponse>
-
 }

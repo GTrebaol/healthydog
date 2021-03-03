@@ -38,13 +38,11 @@ class HealthyDogActivityViewModel (
         drawerIndex = lastIndex
     }
 
-    /** Update navbar index programmatically. This function do not trigger  */
     private fun selectNavBarIndex(index: Int) = selectNavBarIndex(NavBarLayoutData.Event.External(index))
     private fun selectNavBarIndex(event: NavBarLayoutData.Event) {
         navigation.navigationItems.selected.value = event
     }
 
-    /** When user tap on navigation bar */
     private fun onNavigationUpdate(event: NavBarLayoutData.Event) = viewModelScope.launch(dispatchers.main) {
         when (event) {
             is NavBarLayoutData.Event.User -> {

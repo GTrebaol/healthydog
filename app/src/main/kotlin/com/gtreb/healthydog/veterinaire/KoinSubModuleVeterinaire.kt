@@ -13,7 +13,5 @@ internal object KoinSubModuleVeterinaire : IKoinModule {
         single<VeterinaireModule.ModuleEntry> { VeterinaireModuleEntry(get()) }
     }
 
-
     override val modules: List<Module> = listOf(veterinaireModule)
-
 }

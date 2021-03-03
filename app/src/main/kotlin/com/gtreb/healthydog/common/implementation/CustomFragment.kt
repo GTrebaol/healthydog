@@ -11,12 +11,6 @@ import com.gtreb.healthydog.common.navigation.NavigationItem
 import com.gtreb.healthydog.common.navigation.NavigationPublisher
 import com.gtreb.healthydog.BR
 
-
-
-/**
- * Used by Router to navigate in Phenix Base.
- * Minimal screen portion.
- **/
 abstract class CustomFragment<VB : ViewDataBinding> : Fragment() {
 
     /** The ViewDataBinding used by the view. */
@@ -44,10 +38,5 @@ abstract class CustomFragment<VB : ViewDataBinding> : Fragment() {
         return binding.root
     }
 
-
-    /**
-     * This method is called when the underlying router needs to do a back on it
-     * @return true when fragment consume the back
-     **/
     open fun onBackPressed(): Boolean = false
 }

@@ -13,5 +13,4 @@ class DashboardFragmentViewModel (
     application: Application,
 ) : AndroidViewModel(application) {
 
-
 }

@@ -14,7 +14,5 @@ internal object KoinSubModuleDashboard : IKoinModule {
         single<DashboardModule.ModuleEntry> { DashboardModuleEntry(get()) }
     }
 
-
     override val modules: List<Module> = listOf(dashboardModule)
-
 }

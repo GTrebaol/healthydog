@@ -30,14 +30,12 @@ import org.koin.dsl.module
 
 object KoinModule : IKoinModule {
 
-    // File name for shared preferences
     private const val SHARED_PREFERENCES_FILE_NAME = "gtreb_shared_preferences"
 
     private val routerModule = module {
         single<IRouter> { Router() }
     }
 
-    /** Single instance of shared preference encrypted */
     private val sharedPreferencesModule = module {
         factory {
             EncryptedSharedPreferences.create(
@@ -79,8 +77,6 @@ object KoinModule : IKoinModule {
             single<IDispatcherService>(IDispatcherService.Default) { DefaultDispatcherService() }
             single<IDispatcherService> { get(IDispatcherService.Default) }
     }
-
-
 
     override val modules: List<Module> = listOf(monitorModule, routerModule, sharedPreferencesModule, navigationModule, exitModule, coordinatorsModule, dispatcherModule)
         .plus(KoinSubModuleDashboard.modules)

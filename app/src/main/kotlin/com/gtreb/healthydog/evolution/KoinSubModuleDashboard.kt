@@ -13,7 +13,6 @@ internal object KoinSubModuleEvolution : IKoinModule {
         single<EvolutionModule.ModuleEntry> { EvolutionModuleEntry(get()) }
     }
 
-
     override val modules: List<Module> = listOf(evolutionModule)
 
 }

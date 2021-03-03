@@ -10,7 +10,5 @@ class NavBarLayoutData {
     }
 
     val selected = MutableStateFlow<Event>(Event.External(0))
-
-    /** List of navItem to show on screen */
     val navItems = MutableLiveData<List<NavBarItemViewData>>(listOf())
 }

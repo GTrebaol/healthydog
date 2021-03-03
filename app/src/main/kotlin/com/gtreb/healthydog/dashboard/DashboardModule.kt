@@ -18,5 +18,4 @@ object DashboardModule {
         fun exitToOtherAccounts(arguments: Map<String, Any?> = mapOf())
 
     }
-
 }

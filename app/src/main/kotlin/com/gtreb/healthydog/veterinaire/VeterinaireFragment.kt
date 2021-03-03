@@ -27,7 +27,6 @@ class VeterinaireFragment : CustomFragment<VeterinaireFragmentBinding>(), OnMapR
     override val navigationItem: NavigationItem
         get() = NavigationItem(VeterinaireModule::class, VeterinaireFragment::class)
 
-
     @ExperimentalCoroutinesApi
     override fun bindViewModels(binding: VeterinaireFragmentBinding) {
         binding.viewModelVeterinaire = viewModelVeterinaire

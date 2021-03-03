@@ -17,7 +17,6 @@ class DashboardFragment : CustomFragment<DashboardFragmentBinding>() {
     override val navigationItem: NavigationItem
         get() = NavigationItem(DashboardModule::class, DashboardFragment::class)
 
-
     @ExperimentalCoroutinesApi
     override fun bindViewModels(binding: DashboardFragmentBinding) {
         binding.viewModelDashBoard = viewModelDashBoard

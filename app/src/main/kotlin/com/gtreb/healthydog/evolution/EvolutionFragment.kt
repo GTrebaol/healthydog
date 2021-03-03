@@ -17,7 +17,6 @@ class EvolutionFragment : CustomFragment<EvolutionFragmentBinding>() {
     override val navigationItem: NavigationItem
         get() = NavigationItem(EvolutionModule::class, EvolutionFragment::class)
 
-
     @ExperimentalCoroutinesApi
     override fun bindViewModels(binding: EvolutionFragmentBinding) {
         binding.viewModelEvolution = viewModelEvolution

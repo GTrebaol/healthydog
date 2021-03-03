@@ -14,14 +14,9 @@ class Router : IRouter, KoinComponent {
     private val monitor: TimberMonitor by inject()
 
     companion object {
-        /**
-         * Use this backstack entry to add fragment as root
-         * Prevent app to close if there is only root fragment on the backstack
-         */
         private const val ROOT_BACK_STACK_NAME = "ROOT_BACK_STACK_NAME"
     }
 
-    /** Exception throw when initialization failed */
     class InitializationException : IllegalArgumentException(
         """
         Map arguments must have :
@@ -30,7 +25,6 @@ class Router : IRouter, KoinComponent {
         """.trimIndent()
     )
 
-    /** Exception throw when a method is called before init */
     class RouterNotInitialized : IllegalStateException("Please call IRouter.init() before any methods")
 
     private var fragmentManager: FragmentManager? = null

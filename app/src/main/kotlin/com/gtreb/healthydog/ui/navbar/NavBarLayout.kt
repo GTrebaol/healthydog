@@ -43,14 +43,11 @@ class NavBarLayout @JvmOverloads constructor(
         val _lifecycle = lifecycle ?: return
         val _viewData = viewData ?: return
 
-        // Observe for change in item list
         _viewData.navItems.observe(
                 _lifecycle,
             { items ->
-                // update existing items if any
                 items.indices.forEach { index ->
                     val tabItem = getChildAt(index) as? NavBarItemView ?: NavBarItemView(context).also {
-                        // Child must take as much space as possible
                         it.layoutParams = LayoutParams(0, LayoutParams.WRAP_CONTENT, 1f)
                         addView(it)
                     }
@@ -61,13 +58,11 @@ class NavBarLayout @JvmOverloads constructor(
                         }
                     }
                 }
-                // Delete excess
                 (items.size until childCount).forEach { removeViewAt(it) }
                 postInvalidate()
             }
         )
 
-        // Observe for change in selected item
         _viewData.selected.asLiveData().observe(
             _lifecycle,
             { event ->

@@ -30,7 +30,6 @@ class HealthyDogActivity : CustomActivity<HealthyDogActivityBinding>() {
                 println("Navigation : ${it.toList().joinToString { "${it.first} - ${it.second}" }}")
             }
         )
-        // Init router coordinator with fragment manager and fragment's container
         router.init(
             mapOf(
                 IRouter.FRAGMENT_MANAGER to supportFragmentManager,
