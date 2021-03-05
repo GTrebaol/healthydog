@@ -3,6 +3,7 @@ package com.gtreb.healthydog
 import android.content.SharedPreferences
 import androidx.security.crypto.EncryptedSharedPreferences
 import androidx.security.crypto.MasterKeys
+import com.gtreb.healthydog.api.GooglePlacesRepository
 import com.gtreb.healthydog.common.implementation.Router
 import com.gtreb.healthydog.common.implementation.TimberMonitor
 import com.gtreb.healthydog.common.interfaces.IKoinModule
@@ -10,8 +11,8 @@ import com.gtreb.healthydog.common.interfaces.IRouter
 import com.gtreb.healthydog.common.navigation.DefaultDispatcherService
 import com.gtreb.healthydog.common.navigation.IDispatcherService
 import com.gtreb.healthydog.common.navigation.NavigationViewData
-import com.gtreb.healthydog.dashboard.DashboardModule
 import com.gtreb.healthydog.dashboard.DashboardCoordinator
+import com.gtreb.healthydog.dashboard.DashboardModule
 import com.gtreb.healthydog.dashboard.KoinSubModuleDashboard
 import com.gtreb.healthydog.evolution.EvolutionCoordinator
 import com.gtreb.healthydog.evolution.EvolutionModule
@@ -27,6 +28,7 @@ import org.koin.android.ext.koin.androidContext
 import org.koin.android.viewmodel.dsl.viewModel
 import org.koin.core.module.Module
 import org.koin.dsl.module
+import retrofit2.Retrofit
 
 object KoinModule : IKoinModule {
 
@@ -62,7 +64,7 @@ object KoinModule : IKoinModule {
     }
 
     private val monitorModule = module {
-        single{
+        single {
             TimberMonitor()
         }
     }
@@ -73,12 +75,26 @@ object KoinModule : IKoinModule {
         single { VeterinaireCoordinator(get(), get()) }
     }
 
-    private val dispatcherModule = module {
-            single<IDispatcherService>(IDispatcherService.Default) { DefaultDispatcherService() }
-            single<IDispatcherService> { get(IDispatcherService.Default) }
+    private val apiModule = module {
+
+        single { Retrofit.Builder(). }
+        single { GooglePlacesRepository(get()) }
     }
 
-    override val modules: List<Module> = listOf(monitorModule, routerModule, sharedPreferencesModule, navigationModule, exitModule, coordinatorsModule, dispatcherModule)
+    private val dispatcherModule = module {
+        single<IDispatcherService>(IDispatcherService.Default) { DefaultDispatcherService() }
+        single<IDispatcherService> { get(IDispatcherService.Default) }
+    }
+
+    override val modules: List<Module> = listOf(
+        monitorModule,
+        routerModule,
+        sharedPreferencesModule,
+        navigationModule,
+        exitModule,
+        coordinatorsModule,
+        dispatcherModule
+    )
         .plus(KoinSubModuleDashboard.modules)
         .plus(KoinSubModuleEvolution.modules)
         .plus(KoinSubModuleVeterinaire.modules)

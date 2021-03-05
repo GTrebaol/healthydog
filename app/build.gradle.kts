@@ -67,6 +67,7 @@ dependencies {
     //app libs
     implementation(AppDependencies.Android.APP_COMPAT)
     implementation(AppDependencies.Android.ANDROIDX_CORE)
+    implementation(AppDependencies.Android.ANDROIDX_FRAGMENT)
     implementation(AppDependencies.Android.DATABINDING)
     implementation(AppDependencies.Android.SECURITY_CRYPTO)
     implementation(AppDependencies.Android.DATABINDING_RUNTIME)
@@ -86,6 +87,10 @@ dependencies {
     implementation(AppDependencies.DependencyInjection.KOIN_ANDROID_SCOPE)
 
     implementation(AppDependencies.Network.RETROFIT)
+    implementation(AppDependencies.Network.OKHTTP)
+    implementation(AppDependencies.Network.OKHTTP_INTERCEPTOR)
+    implementation(AppDependencies.Network.MOSHI)
+    implementation(AppDependencies.Network.CONVERTER_MOSHI)
 
     implementation(AppDependencies.UI.CONSTRAINT_LAYOUT)
     implementation(AppDependencies.UI.LOTTIE)

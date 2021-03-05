@@ -16,7 +16,10 @@ object AppDependencies {
     object Android {
         const val APP_COMPAT = "androidx.appcompat:appcompat:${Versions.Android.APP_COMPAT}"
         const val ANDROIDX_CORE = "androidx.core:core-ktx:${Versions.Android.ANDROIDX_CORE}"
-        const val LIFECYCLE_LIVEDATA = "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.Android.LIFECYCLE}"
+        const val ANDROIDX_FRAGMENT =
+            "androidx.fragment:fragment:${Versions.Android.ANDROIX_FRAGMENT}"
+        const val LIFECYCLE_LIVEDATA =
+            "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.Android.LIFECYCLE}"
         const val LIFECYCLE_VIEWMODEL = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.Android.LIFECYCLE}"
 
         // contains encrypted sharedPreferences
@@ -43,6 +46,12 @@ object AppDependencies {
 
     object Network {
         const val RETROFIT = "com.squareup.retrofit2:retrofit:${Versions.Network.RETROFIT}"
+        const val CONVERTER_MOSHI =
+            "com.squareup.retrofit2:converter-moshi:${Versions.Network.CONVERTER_MOSHI}"
+        const val OKHTTP = "com.squareup.okhttp3:okhttp:${Versions.Network.OKTTP}"
+        const val OKHTTP_INTERCEPTOR =
+            "com.squareup.okhttp3:logging-interceptor:${Versions.Network.OKTTP}"
+        const val MOSHI = "com.squareup.moshi:moshi-kotlin-codegen:${Versions.Network.MOSHI}"
     }
 
 

@@ -9,6 +9,7 @@ object Versions {
     }
 
     object Android {
+        const val ANDROIX_FRAGMENT = "1.3.0"
         const val LIFECYCLE = "2.2.0"
         const val ANDROIDX_CORE = "1.3.2"
         const val DATABINDING = "3.5.0"
@@ -35,6 +36,9 @@ object Versions {
     }
 
     object Network {
+        const val MOSHI = "1.11.0"
+        const val CONVERTER_MOSHI = "latest.version"
+        const val OKTTP = "4.9.0"
         const val RETROFIT = "2.6.2"
     }
 

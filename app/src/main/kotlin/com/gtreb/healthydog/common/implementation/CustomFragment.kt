@@ -7,13 +7,14 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
+import com.gtreb.healthydog.BR
 import com.gtreb.healthydog.common.navigation.NavigationItem
 import com.gtreb.healthydog.common.navigation.NavigationPublisher
-import com.gtreb.healthydog.BR
 
 abstract class CustomFragment<VB : ViewDataBinding> : Fragment() {
 
     /** The ViewDataBinding used by the view. */
+    val logger = TimberMonitor()
     lateinit var binding: VB
     abstract val layoutId: Int
 

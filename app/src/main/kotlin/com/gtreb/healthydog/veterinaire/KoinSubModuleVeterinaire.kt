@@ -9,7 +9,7 @@ import org.koin.dsl.module
 internal object KoinSubModuleVeterinaire : IKoinModule {
     private val veterinaireModule = module {
         fragment { VeterinaireFragment() }
-        viewModel { VeterinaireFragmentViewModel(get(), get(), get()) }
+        viewModel { VeterinaireFragmentViewModel(get(), get(), get(), get(), get()) }
         single<VeterinaireModule.ModuleEntry> { VeterinaireModuleEntry(get()) }
     }
 
