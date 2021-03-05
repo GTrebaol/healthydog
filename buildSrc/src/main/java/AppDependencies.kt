@@ -20,14 +20,17 @@ object AppDependencies {
             "androidx.fragment:fragment:${Versions.Android.ANDROIX_FRAGMENT}"
         const val LIFECYCLE_LIVEDATA =
             "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.Android.LIFECYCLE}"
-        const val LIFECYCLE_VIEWMODEL = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.Android.LIFECYCLE}"
+        const val LIFECYCLE_VIEWMODEL =
+            "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.Android.LIFECYCLE}"
 
         // contains encrypted sharedPreferences
-        const val SECURITY_CRYPTO = "androidx.security:security-crypto:${Versions.Android.SECURITY_CRYPTO}"
+        const val SECURITY_CRYPTO =
+            "androidx.security:security-crypto:${Versions.Android.SECURITY_CRYPTO}"
 
         // Databinding compiler
         const val DATABINDING = "com.android.databinding:compiler:${Versions.Android.DATABINDING}"
-        const val DATABINDING_RUNTIME = "androidx.databinding:databinding-runtime:${Versions.Android.DATABINDING_RUNTIME}"
+        const val DATABINDING_RUNTIME =
+            "androidx.databinding:databinding-runtime:${Versions.Android.DATABINDING_RUNTIME}"
 
     }
 
