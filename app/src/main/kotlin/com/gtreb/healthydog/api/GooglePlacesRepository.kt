@@ -2,12 +2,14 @@ package com.gtreb.healthydog.api
 
 import com.google.android.gms.maps.model.LatLng
 import com.gtreb.healthydog.BuildConfig
+import com.gtreb.healthydog.common.implementation.TimberMonitor
 import com.gtreb.healthydog.utils.callApi
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
 class GooglePlacesRepository(
-    private val googleMapsApi: GoogleMapsApi
+    private val googleMapsApi: GoogleMapsApi,
+    private val logger: TimberMonitor
 ) {
 
     fun findNearbyVets(
@@ -27,6 +29,7 @@ class GooglePlacesRepository(
     }
 
     private fun parseResponse(body: String?): List<LatLng> {
+        logger.logD(body!!)
         return emptyList()
     }
 

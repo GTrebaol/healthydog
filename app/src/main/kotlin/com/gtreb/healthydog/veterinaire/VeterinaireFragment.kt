@@ -110,11 +110,6 @@ class VeterinaireFragment : CustomFragment<VeterinaireFragmentBinding>(), OnMapR
         this.googleMap = googleMap
         this.googleMap.uiSettings.isZoomControlsEnabled = true
         getCurrentLocation()
-        getNearbyVets()
-    }
-
-    private fun getNearbyVets() {
-
     }
 
     @SuppressLint("MissingPermission")
