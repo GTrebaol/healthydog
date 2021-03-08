@@ -1,4 +1,4 @@
-package com.gtreb.healthydog.utils
+package com.gtreb.healthydog.api.common
 
 
 import okhttp3.Headers

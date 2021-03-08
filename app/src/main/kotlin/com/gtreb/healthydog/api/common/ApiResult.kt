@@ -1,8 +1,8 @@
-package com.gtreb.healthydog.utils
+package com.gtreb.healthydog.api.common
 
 
-import com.gtreb.healthydog.utils.ApiResult.Error
-import com.gtreb.healthydog.utils.ApiResult.Success
+import com.gtreb.healthydog.api.common.ApiResult.Error
+import com.gtreb.healthydog.api.common.ApiResult.Success
 import okhttp3.Headers
 
 /**

@@ -3,7 +3,7 @@ package com.gtreb.healthydog
 import android.content.SharedPreferences
 import androidx.security.crypto.EncryptedSharedPreferences
 import androidx.security.crypto.MasterKeys
-import com.gtreb.healthydog.api.GooglePlacesRepository
+import com.gtreb.healthydog.api.KoinModuleApi
 import com.gtreb.healthydog.common.implementation.Router
 import com.gtreb.healthydog.common.implementation.TimberMonitor
 import com.gtreb.healthydog.common.interfaces.IKoinModule
@@ -28,7 +28,6 @@ import org.koin.android.ext.koin.androidContext
 import org.koin.android.viewmodel.dsl.viewModel
 import org.koin.core.module.Module
 import org.koin.dsl.module
-import retrofit2.Retrofit
 
 object KoinModule : IKoinModule {
 
@@ -75,12 +74,6 @@ object KoinModule : IKoinModule {
         single { VeterinaireCoordinator(get(), get()) }
     }
 
-    private val apiModule = module {
-
-        single { Retrofit.Builder(). }
-        single { GooglePlacesRepository(get()) }
-    }
-
     private val dispatcherModule = module {
         single<IDispatcherService>(IDispatcherService.Default) { DefaultDispatcherService() }
         single<IDispatcherService> { get(IDispatcherService.Default) }
@@ -95,6 +88,7 @@ object KoinModule : IKoinModule {
         coordinatorsModule,
         dispatcherModule
     )
+        .plus(KoinModuleApi.modules)
         .plus(KoinSubModuleDashboard.modules)
         .plus(KoinSubModuleEvolution.modules)
         .plus(KoinSubModuleVeterinaire.modules)

@@ -1,16 +1,21 @@
-package com.gtreb.healthydog.utils
+package com.gtreb.healthydog.api.common
 
-import android.content.Context
 import com.gtreb.healthydog.common.implementation.TimberMonitor
 import com.squareup.moshi.Moshi
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
+import org.koin.core.context.loadKoinModules
+import org.koin.core.qualifier.qualifier
+import org.koin.dsl.module
 import retrofit2.Retrofit
+import retrofit2.converter.moshi.MoshiConverterFactory
 import java.util.concurrent.TimeUnit
 
 
-object HttpUtils {
+object CustomProviders {
     private const val TIMEOUT = 60L
+    private const val QUALIFIER_OKHTTP_SUFFIX = ".okhttp"
+
 
     /**
      * Provide the retrofit client
@@ -19,12 +24,19 @@ object HttpUtils {
      * @param url The endpoint
      * @return The retrofit client
      */
-    fun provideRetrofitClient(client: OkHttpClient, moshi: Moshi, url: String) =
-        Retrofit.Builder()
-            .baseUrl(url)
-            .client(client)
+    inline fun <reified T> provideRetrofitClient(monitor: TimberMonitor, moshi: Moshi): T {
+        val okHttpClient = provideClient(monitor)
+        loadKoinModules(
+            module {
+                single(getQualifier(T::class.java)) { okHttpClient }
+            }
+        )
+        return Retrofit.Builder()
+            .baseUrl("http://localhost/")
+            .client(okHttpClient.build())
             .addConverterFactory(MoshiConverterFactory.create(moshi))
-            .build()
+            .build().create(T::class.java)
+    }
 
 
     /**
@@ -33,22 +45,23 @@ object HttpUtils {
      * @return okhttp client builder with timeout
      */
     fun provideClient(
-        context: Context,
-        mocked: Boolean? = false,
         monitor: TimberMonitor
     ): OkHttpClient.Builder {
-        val builder = OkHttpClient.Builder()
+
+
+        return OkHttpClient.Builder()
             .connectTimeout(TIMEOUT, TimeUnit.SECONDS)
             .readTimeout(TIMEOUT, TimeUnit.SECONDS)
             .writeTimeout(TIMEOUT, TimeUnit.SECONDS)
             .addInterceptor(
-                HttpLoggingInterceptor(logger = MyHttpLogger(monitor)).apply {
+                HttpLoggingInterceptor(logger = CustomHttpLogger(monitor)).apply {
                     level = HttpLoggingInterceptor.Level.BODY
                 }
             )
-
-
-        return builder
     }
+
+
+    fun getQualifier(clazz: Class<*>) = qualifier(clazz.name + QUALIFIER_OKHTTP_SUFFIX)
+
 
 }

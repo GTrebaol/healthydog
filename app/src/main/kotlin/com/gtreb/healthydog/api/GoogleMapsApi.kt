@@ -1,18 +1,19 @@
 package com.gtreb.healthydog.api
 
+import com.gtreb.healthydog.model.VeterinarySearchResponse
 import retrofit2.Call
 import retrofit2.http.GET
-import retrofit2.http.Path
+import retrofit2.http.Query
 
 
 interface GoogleMapsApi {
 
-    @GET("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location={latitude},{longitude}&radius={radius}&type={type}&key={api_key}&sensor=true")
+    @GET("https://maps.googleapis.com/maps/api/place/nearbysearch/json")
     fun findNearbyPlaces(
-        @Path("latitude") latitude: Double,
-        @Path("longitude") longitude: Double,
-        @Path("radius") radius: Int,
-        @Path("type") shopType: String,
-        @Path("api_key") apiKey: String
-    ): Call<String>
+        @Query("location") location: String,
+        @Query("radius") radius: Int,
+        @Query("type") type: String,
+        @Query("key") key: String,
+        @Query("sensor") sensor: Boolean
+    ): Call<VeterinarySearchResponse>
 }

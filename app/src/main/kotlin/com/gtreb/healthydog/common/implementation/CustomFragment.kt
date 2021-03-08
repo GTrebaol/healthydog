@@ -25,6 +25,10 @@ abstract class CustomFragment<VB : ViewDataBinding> : Fragment() {
 
     open val lifecycleOwner get() = viewLifecycleOwner
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        lifecycle.addObserver(navigationPublisher)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -34,7 +38,6 @@ abstract class CustomFragment<VB : ViewDataBinding> : Fragment() {
         binding = DataBindingUtil.inflate(inflater, layoutId, container, false)
         binding.lifecycleOwner = lifecycleOwner
         binding.setVariable(BR.lifecycle, lifecycleOwner)
-        lifecycleOwner.lifecycle.addObserver(navigationPublisher)
         bindViewModels(binding)
         return binding.root
     }

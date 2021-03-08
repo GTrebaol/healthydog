@@ -37,10 +37,17 @@ object Versions {
 
     object Network {
         const val MOSHI = "1.11.0"
-        const val CONVERTER_MOSHI = "latest.version"
+        const val CONVERTER_MOSHI = "2.9.0"
         const val OKTTP = "4.9.0"
         const val RETROFIT = "2.6.2"
     }
+
+    object Api {
+        const val JSON_MOSHI_KOTLIN = "1.9.2"
+        const val JSON_MOSHI_ADAPTER = "1.9.2"
+        const val THREETENBP_ADAPTER = "1.4.0"
+    }
+
 
     object UI {
         const val CONSTRAINT_LAYOUT = "2.0.0-beta6"

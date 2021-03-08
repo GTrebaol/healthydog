@@ -32,11 +32,11 @@ android {
 
     flavorDimensions(AppConfig.DIMENSION)
     productFlavors {
-        create("production") {
-            dimension = AppConfig.DIMENSION
-        }
         create("staging") {
             applicationIdSuffix = ".staging"
+            dimension = AppConfig.DIMENSION
+        }
+        create("production") {
             dimension = AppConfig.DIMENSION
         }
 
@@ -50,6 +50,13 @@ android {
 
     packagingOptions {
         exclude("META-INF/notice.txt")
+        exclude("META-INF/DEPENDENCIES")
+        exclude("META-INF/NOTICE")
+        exclude("META-INF/LICENSE")
+        exclude("META-INF/LICENSE.txt")
+        exclude("META-INF/NOTICE.txt")
+        exclude("META-INF/*.kotlin_module")
+        exclude("META-INF/gradle/incremental.annotation.processors")
     }
 
     compileOptions {
@@ -87,10 +94,15 @@ dependencies {
     implementation(AppDependencies.DependencyInjection.KOIN_ANDROID_SCOPE)
 
     implementation(AppDependencies.Network.RETROFIT)
+    implementation(AppDependencies.Network.CONVERTER_MOSHI)
+    implementation(AppDependencies.Network.MOSHI)
     implementation(AppDependencies.Network.OKHTTP)
     implementation(AppDependencies.Network.OKHTTP_INTERCEPTOR)
-    implementation(AppDependencies.Network.MOSHI)
-    implementation(AppDependencies.Network.CONVERTER_MOSHI)
+    implementation(AppDependencies.Network.CONVERTER_SCALARS)
+
+
+    implementation(AppDependencies.Api.JSON_MOSHI_KOTLIN)
+    implementation(AppDependencies.Api.JSON_MOSHI_ADAPTER)
 
     implementation(AppDependencies.UI.CONSTRAINT_LAYOUT)
     implementation(AppDependencies.UI.LOTTIE)

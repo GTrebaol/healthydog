@@ -1,7 +1,9 @@
-package com.gtreb.healthydog.utils
+package com.gtreb.healthydog.api.common
 
+import com.gtreb.healthydog.common.implementation.TimberMonitor
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.single
 import okhttp3.Headers
 import retrofit2.Call
 import retrofit2.Callback
@@ -75,23 +77,13 @@ fun <T : Any> Call<T>.flowApi() = flow<ApiResult<T>> {
 }
 
 /**
- * Extension for the class [Call] that can handle a request and return a flow of only success.
+ * Extension for the class [Call] that can handle a request and return the ApiResult.Success or null if error
  * This extension function can be use with flow’s catch function.
- *
- * @return A [kotlinx.coroutines.flow.Flow] of [ApiResult.Success] object.
- * @throws ApiThrowable when [ApiResult.Error] is received
- * @see kotlinx.coroutines.flow.catch
+ * @param monitor Use to log
+ * @param errorToLog The error to log in case of error
+ * @return An [ApiResult.Success]
  */
-fun <T : Any> Call<T>.flowApiThrowable() = flow<ApiResult.Success<T>> {
-    // without buffer, in a environment with only one thread, the call can offer() before the receive().
-    // effectively missing some outputs.
-    val result: Channel<ApiResult<T>> = Channel(Channel.BUFFERED)
-    this@flowApiThrowable.callApi(
-        { result.offer(it) },
-        { result.offer(it) }
-    )
-    when (val it = result.receive()) {
-        is ApiResult.Success<T> -> emit(it)
-        is ApiResult.Error -> throw it.error.asThrowable()
-    }
-}
+suspend fun <T : Any> Call<T>.quickCallApi(monitor: TimberMonitor, errorToLog: String) =
+    this.flowApi().single().handle(monitor, errorToLog)
+
+

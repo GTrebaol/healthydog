@@ -50,13 +50,21 @@ object AppDependencies {
     object Network {
         const val RETROFIT = "com.squareup.retrofit2:retrofit:${Versions.Network.RETROFIT}"
         const val CONVERTER_MOSHI =
-            "com.squareup.retrofit2:converter-moshi:${Versions.Network.CONVERTER_MOSHI}"
+            "com.squareup.retrofit2:converter-moshi:${Versions.Network.RETROFIT}"
+        const val CONVERTER_SCALARS =
+            "com.squareup.retrofit2:converter-scalars:${Versions.Network.RETROFIT}"
         const val OKHTTP = "com.squareup.okhttp3:okhttp:${Versions.Network.OKTTP}"
         const val OKHTTP_INTERCEPTOR =
             "com.squareup.okhttp3:logging-interceptor:${Versions.Network.OKTTP}"
         const val MOSHI = "com.squareup.moshi:moshi-kotlin-codegen:${Versions.Network.MOSHI}"
     }
 
+    object Api {
+        const val JSON_MOSHI_KOTLIN =
+            "com.squareup.moshi:moshi-kotlin:${Versions.Api.JSON_MOSHI_KOTLIN}"
+        const val JSON_MOSHI_ADAPTER =
+            "com.squareup.moshi:moshi-adapters:${Versions.Api.JSON_MOSHI_ADAPTER}"
+    }
 
 
     object Testing {
@@ -65,7 +73,8 @@ object AppDependencies {
 
 
     object EventBus {
-        const val LOCAL_BROADCAST_MANAGER = "androidx.localbroadcastmanager:localbroadcastmanager:${Versions.EventBus.LOCAL_BROADCAST_MANAGER}"
+        const val LOCAL_BROADCAST_MANAGER =
+            "androidx.localbroadcastmanager:localbroadcastmanager:${Versions.EventBus.LOCAL_BROADCAST_MANAGER}"
     }
 
     object Logging {
