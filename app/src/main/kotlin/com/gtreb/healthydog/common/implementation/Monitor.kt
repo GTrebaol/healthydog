@@ -1,6 +1,5 @@
 package com.gtreb.healthydog.common.implementation
 
-import android.annotation.SuppressLint
 import android.util.Log
 import com.gtreb.healthydog.BuildConfig
 import com.gtreb.healthydog.common.interfaces.ITechnicalModuleAction
@@ -52,17 +51,14 @@ class TimberMonitor : LoggingAction() {
         Timber.plant(MyDebugTree())
     }
 
-    @SuppressLint("WrongLogger")
     override fun logV(message: String) {
         if (BuildConfig.DEBUG) Timber.v(message)
     }
 
-    @SuppressLint("WrongLogger")
     override fun logD(message: String) {
         if (BuildConfig.DEBUG) Timber.d(message)
     }
 
-    @SuppressLint("WrongLogger")
     override fun logE(message: String, throwable: Throwable?) {
         Timber.e(throwable, message)
     }

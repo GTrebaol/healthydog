@@ -11,7 +11,7 @@
             type="androidx.lifecycle.LifecycleOwner" />
         <variable
             name="viewModelVeterinaire"
-            type="com.gtreb.healthydog.veterinaire.VeterinaireFragmentViewModel"/>
+            type="com.gtreb.healthydog.veterinaire.VeterinaryFragmentViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

@@ -2,13 +2,13 @@ package com.gtreb.healthydog.veterinaire
 
 import com.gtreb.healthydog.common.interfaces.IRouter
 
-class VeterinaireCoordinator(
+class VeterinaryCoordinator(
     private val router: IRouter,
-    private val exit: VeterinaireModule.ModuleExit
+    private val exit: VeterinaryModule.ModuleExit
 ) {
 
-    fun goToVeterinaire() {
-        router.show(VeterinaireFragment::class.java)
+    fun goToVeterinary() {
+        router.show(VeterinaryFragment::class.java)
     }
 
     fun goToOtherAccount() = exit.exitToOtherAccounts()

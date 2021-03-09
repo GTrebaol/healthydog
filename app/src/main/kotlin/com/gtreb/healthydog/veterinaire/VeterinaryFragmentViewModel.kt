@@ -13,11 +13,11 @@ import com.gtreb.healthydog.model.VeterinaryPlace
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
-class VeterinaireFragmentViewModel(
+class VeterinaryFragmentViewModel(
     private val dispatcher: IDispatcherService,
     private val googleRepository: GooglePlacesRepository,
     private val logger: TimberMonitor,
-    private val coordinator: VeterinaireCoordinator,
+    private val coordinator: VeterinaryCoordinator,
     application: Application,
 ) : AndroidViewModel(application) {
 

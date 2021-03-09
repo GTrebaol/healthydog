@@ -21,9 +21,9 @@ import com.gtreb.healthydog.exit.DashboardModuleExit
 import com.gtreb.healthydog.exit.EvolutionModuleExit
 import com.gtreb.healthydog.exit.VeterinaireModuleExit
 import com.gtreb.healthydog.ui.logic.HealthyDogActivityViewModel
-import com.gtreb.healthydog.veterinaire.KoinSubModuleVeterinaire
-import com.gtreb.healthydog.veterinaire.VeterinaireCoordinator
-import com.gtreb.healthydog.veterinaire.VeterinaireModule
+import com.gtreb.healthydog.veterinaire.KoinSubModuleVeterinary
+import com.gtreb.healthydog.veterinaire.VeterinaryCoordinator
+import com.gtreb.healthydog.veterinaire.VeterinaryModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.viewmodel.dsl.viewModel
 import org.koin.core.module.Module
@@ -58,7 +58,7 @@ object KoinModule : IKoinModule {
     private val exitModule = module {
         single<DashboardModule.ModuleExit> { DashboardModuleExit(get()) }
         single<EvolutionModule.ModuleExit> { EvolutionModuleExit(get()) }
-        single<VeterinaireModule.ModuleExit> { VeterinaireModuleExit(get()) }
+        single<VeterinaryModule.ModuleExit> { VeterinaireModuleExit(get()) }
         single<SharedPreferences.Editor> { get<SharedPreferences>().edit() }
     }
 
@@ -71,7 +71,7 @@ object KoinModule : IKoinModule {
     private val coordinatorsModule = module {
         single { DashboardCoordinator(get(), get()) }
         single { EvolutionCoordinator(get(), get()) }
-        single { VeterinaireCoordinator(get(), get()) }
+        single { VeterinaryCoordinator(get(), get()) }
     }
 
     private val dispatcherModule = module {
@@ -91,5 +91,5 @@ object KoinModule : IKoinModule {
         .plus(KoinModuleApi.modules)
         .plus(KoinSubModuleDashboard.modules)
         .plus(KoinSubModuleEvolution.modules)
-        .plus(KoinSubModuleVeterinaire.modules)
+        .plus(KoinSubModuleVeterinary.modules)
 }

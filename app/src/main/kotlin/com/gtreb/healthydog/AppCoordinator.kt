@@ -5,7 +5,7 @@ import com.gtreb.healthydog.common.interfaces.IRouter
 import com.gtreb.healthydog.dashboard.DashboardModule
 import com.gtreb.healthydog.evolution.EvolutionModule
 import com.gtreb.healthydog.utils.toast
-import com.gtreb.healthydog.veterinaire.VeterinaireModule
+import com.gtreb.healthydog.veterinaire.VeterinaryModule
 import org.koin.core.KoinComponent
 import org.koin.core.inject
 
@@ -13,7 +13,7 @@ class AppCoordinator(private val context: Context, private val router: IRouter) 
 
     private val dashboard: DashboardModule.ModuleEntry by inject()
     private val evolution: EvolutionModule.ModuleEntry by inject()
-    private val veterinaire: VeterinaireModule.ModuleEntry by inject()
+    private val veterinaire: VeterinaryModule.ModuleEntry by inject()
 
     internal fun startMain() {
        goToDashboard()
@@ -23,7 +23,7 @@ class AppCoordinator(private val context: Context, private val router: IRouter) 
     internal fun goToEvolution() = evolution.startEvolution()
     internal fun goToCalendar() = unimplemented()
     internal fun goToBarf() = unimplemented()
-    internal fun goToEmergencyVet() = veterinaire.startVeterinaire()
+    internal fun goToEmergencyVet() = veterinaire.startVeterinary()
 
     private fun unimplemented() {
         context.toast(
