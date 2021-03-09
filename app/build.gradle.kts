@@ -108,6 +108,7 @@ dependencies {
     implementation(AppDependencies.UI.LOTTIE)
     implementation(AppDependencies.UI.GRAPH)
     implementation(AppDependencies.UI.GOOGLE_PLACES)
+    implementation(AppDependencies.UI.GOOGLE_PLAY_CORE)
 
 
     implementation(AppDependencies.Asynchronous.COROUTINES_CORE)
@@ -118,4 +119,7 @@ dependencies {
 
     //test libs
     testImplementation(AppDependencies.Testing.JUNIT5)
+    testImplementation(AppDependencies.Testing.CORE)
+    testImplementation(AppDependencies.Testing.COROUTINES)
+    testImplementation(AppDependencies.Testing.MOCKK)
 }

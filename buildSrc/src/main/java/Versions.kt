@@ -31,8 +31,10 @@ object Versions {
     }
 
     object Testing {
+        const val CORE_TESTING = "2.1.0"
         const val JUNIT5 = "5.7.0"
-
+        const val MOCKK = "1.10.0"
+        const val COROUTINES = Asynchronous.COROUTINES
     }
 
     object Network {
@@ -54,6 +56,8 @@ object Versions {
         const val LOTTIE = "3.0.0"
         const val CHART = "3.1.0"
         const val GOOGLE_PLACES = "2.4.0"
+        const val GOOGLE_PLAY_CORE = "1.8.1"
+
     }
 
     object Logging {

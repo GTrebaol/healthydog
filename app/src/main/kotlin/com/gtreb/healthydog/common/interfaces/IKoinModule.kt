@@ -1,5 +1,7 @@
 package com.gtreb.healthydog.common.interfaces
 
+import org.koin.core.module.Module
+
 interface IKoinModule {
-    public abstract val modules: kotlin.collections.List<org.koin.core.module.Module>
+    val modules: List<Module>
 }

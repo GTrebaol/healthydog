@@ -2,7 +2,7 @@ package com.gtreb.healthydog.exit
 
 import com.gtreb.healthydog.AppCoordinator
 import com.gtreb.healthydog.dashboard.DashboardModule
-import com.gtreb.healthydog.veterinaire.VeterinaryModule
+import com.gtreb.healthydog.veterinary.VeterinaryModule
 
 /**
  * Exit points of [DashboardModule]

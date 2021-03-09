@@ -21,9 +21,9 @@ import com.gtreb.healthydog.exit.DashboardModuleExit
 import com.gtreb.healthydog.exit.EvolutionModuleExit
 import com.gtreb.healthydog.exit.VeterinaireModuleExit
 import com.gtreb.healthydog.ui.logic.HealthyDogActivityViewModel
-import com.gtreb.healthydog.veterinaire.KoinSubModuleVeterinary
-import com.gtreb.healthydog.veterinaire.VeterinaryCoordinator
-import com.gtreb.healthydog.veterinaire.VeterinaryModule
+import com.gtreb.healthydog.veterinary.KoinSubModuleVeterinary
+import com.gtreb.healthydog.veterinary.VeterinaryCoordinator
+import com.gtreb.healthydog.veterinary.VeterinaryModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.viewmodel.dsl.viewModel
 import org.koin.core.module.Module

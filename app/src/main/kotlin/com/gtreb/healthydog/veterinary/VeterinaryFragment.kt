@@ -1,4 +1,4 @@
-package com.gtreb.healthydog.veterinaire
+package com.gtreb.healthydog.veterinary
 
 import android.Manifest
 import android.annotation.SuppressLint
@@ -15,7 +15,6 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.MapView
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.model.LatLng
-import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.libraries.places.api.Places
 import com.google.android.libraries.places.api.net.PlacesClient
@@ -28,30 +27,28 @@ import com.gtreb.healthydog.common.implementation.requestPermission
 import com.gtreb.healthydog.common.navigation.NavigationItem
 import com.gtreb.healthydog.databinding.VeterinaryFragmentBinding
 import com.gtreb.healthydog.model.VeterinaryPlace
-import com.gtreb.healthydog.utils.Constants.DEFAULT_RADIUS
 import com.gtreb.healthydog.utils.Constants.DEFAULT_ZOOM
 import com.gtreb.healthydog.utils.Constants.KEY_LOCATION
-import com.gtreb.healthydog.utils.SettingsAction
 import com.gtreb.healthydog.utils.bitmapDescriptorFromVector
 import kotlinx.android.synthetic.main.veterinary_fragment.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.koin.android.viewmodel.ext.android.sharedViewModel
 
-
+/**
+ * This fragment will display the nearest veterinary offices around the user
+ * It will ask for GPS permission, fetch the nearby places and display them
+ */
 class VeterinaryFragment : CustomFragment<VeterinaryFragmentBinding>(), OnMapReadyCallback,
     LocationListener {
 
     private lateinit var mapView: MapView
-    private lateinit var lastKnownLocation: Location
     private lateinit var permissionHandler: ActivityResultLauncher<String>
     private lateinit var locationManager: LocationManager
     private lateinit var placesClient: PlacesClient
-    private lateinit var clientMarker: Marker
     private lateinit var observer: androidx.lifecycle.Observer<List<VeterinaryPlace>>
 
     private val defaultLocation = LatLng(-33.8523341, 151.2106085)
     private var locationPermissionGranted = false
-    private var isGpsOn = false
 
     private val viewModelVeterinary: VeterinaryFragmentViewModel by sharedViewModel()
     override val layoutId: Int = R.layout.veterinary_fragment
@@ -65,8 +62,8 @@ class VeterinaryFragment : CustomFragment<VeterinaryFragmentBinding>(), OnMapRea
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        if (savedInstanceState != null) {
-            lastKnownLocation = savedInstanceState.getParcelable(KEY_LOCATION)!!
+        if (null != savedInstanceState) {
+            viewModelVeterinary.lastKnownLocation = savedInstanceState.getParcelable(KEY_LOCATION)!!
         }
         Places.initialize(requireContext(), BuildConfig.API_KEY)
         placesClient = Places.createClient(requireContext())
@@ -81,6 +78,7 @@ class VeterinaryFragment : CustomFragment<VeterinaryFragmentBinding>(), OnMapRea
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        updateVisibility(locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER))
         mapView = map
         mapView.onCreate(savedInstanceState)
         mapView.onResume()
@@ -88,9 +86,9 @@ class VeterinaryFragment : CustomFragment<VeterinaryFragmentBinding>(), OnMapRea
     }
 
     override fun onMapReady(googleMap: GoogleMap) {
-        this.viewModelVeterinary.googleMap = googleMap
-        this.viewModelVeterinary.googleMap.uiSettings.isZoomControlsEnabled = true
-        this.viewModelVeterinary.googleMap.uiSettings.isTiltGesturesEnabled = true
+        viewModelVeterinary.googleMap = googleMap
+        viewModelVeterinary.googleMap.uiSettings.isZoomControlsEnabled = true
+        viewModelVeterinary.googleMap.uiSettings.isTiltGesturesEnabled = true
         addObserver()
         getCurrentLocation()
     }
@@ -116,6 +114,10 @@ class VeterinaryFragment : CustomFragment<VeterinaryFragmentBinding>(), OnMapRea
             requireContext().getSystemService(Context.LOCATION_SERVICE) as LocationManager
     }
 
+
+    /**
+     * Get the user last known location, if it doesn't exists, ask for the current location
+     */
     @SuppressLint("MissingPermission")
     private fun getCurrentLocation() {
         if (locationPermissionGranted) {
@@ -125,7 +127,7 @@ class VeterinaryFragment : CustomFragment<VeterinaryFragmentBinding>(), OnMapRea
                 if (task.isSuccessful) {
                     // Set the map's camera position to the current location of the device.
                     if (task.result != null) {
-                        lastKnownLocation = task.result
+                        viewModelVeterinary.lastKnownLocation = task.result
                         updatePosition()
                     } else {
                         locationManager.requestLocationUpdates(
@@ -138,11 +140,11 @@ class VeterinaryFragment : CustomFragment<VeterinaryFragmentBinding>(), OnMapRea
                 } else {
                     logger.logE("Current location is null. Using defaults.")
                     logger.logE("Exception: %s", task.exception)
-                    this.viewModelVeterinary.googleMap.moveCamera(
+                    viewModelVeterinary.googleMap.moveCamera(
                         CameraUpdateFactory
                             .newLatLngZoom(defaultLocation, DEFAULT_ZOOM.toFloat())
                     )
-                    this.viewModelVeterinary.googleMap.uiSettings?.isMyLocationButtonEnabled = false
+                    viewModelVeterinary.googleMap.uiSettings?.isMyLocationButtonEnabled = false
                 }
             }
         }
@@ -150,34 +152,28 @@ class VeterinaryFragment : CustomFragment<VeterinaryFragmentBinding>(), OnMapRea
     }
 
     override fun onLocationChanged(location: Location) {
-        this.lastKnownLocation = location
-        this.updatePosition()
+        viewModelVeterinary.lastKnownLocation = location
+        updatePosition()
     }
 
     private fun updatePosition() {
-        val position = LatLng(lastKnownLocation.latitude, lastKnownLocation.longitude)
-        viewModelVeterinary.load(lastKnownLocation, DEFAULT_RADIUS)
-        clientMarker = this.viewModelVeterinary.googleMap.addMarker(
+        val position = LatLng(
+            viewModelVeterinary.lastKnownLocation.latitude,
+            viewModelVeterinary.lastKnownLocation.longitude
+        )
+        viewModelVeterinary.load()
+        viewModelVeterinary.googleMap.addMarker(
             MarkerOptions()
                 .position(position)
                 .title("Your position")
                 .icon(bitmapDescriptorFromVector(requireContext(), R.drawable.ic_nerd))
         )
-        this.viewModelVeterinary.googleMap.moveCamera(
-            CameraUpdateFactory.newLatLngZoom(
-                LatLng(
-                    lastKnownLocation.latitude,
-                    lastKnownLocation.longitude
-                ), DEFAULT_ZOOM.toFloat()
-            )
-        )
-        this.viewModelVeterinary.googleMap.moveCamera(CameraUpdateFactory.newLatLng(position))
     }
 
     private fun addMarkerForVet(veterinaryPlace: VeterinaryPlace) {
         val position =
             LatLng(veterinaryPlace.geometry.location.lat, veterinaryPlace.geometry.location.lng)
-        this.viewModelVeterinary.googleMap.addMarker(
+        viewModelVeterinary.googleMap.addMarker(
             MarkerOptions()
                 .position(position)
                 .title(veterinaryPlace.name)
@@ -202,11 +198,16 @@ class VeterinaryFragment : CustomFragment<VeterinaryFragmentBinding>(), OnMapRea
     }
 
     override fun onProviderDisabled(provider: String) {
-        isGpsOn = false
-        goSettings(SettingsAction.GPS)
+        updateVisibility(false)
     }
 
     override fun onProviderEnabled(provider: String) {
-        isGpsOn = true
+        updateVisibility(true)
+    }
+
+
+    private fun updateVisibility(providerEnabled: Boolean) {
+        gpsNotOn.visibility = if (providerEnabled) View.GONE else View.VISIBLE
+        mapAndList.visibility = if (!providerEnabled) View.GONE else View.VISIBLE
     }
 }

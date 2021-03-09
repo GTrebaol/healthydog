@@ -43,7 +43,10 @@ object AppDependencies {
         const val CONSTRAINT_LAYOUT = "androidx.constraintlayout:constraintlayout:${Versions.UI.CONSTRAINT_LAYOUT}"
         const val LOTTIE = "com.airbnb.android:lottie:${Versions.UI.LOTTIE}"
         const val GRAPH = "com.github.PhilJay:MPAndroidChart:${Versions.UI.CHART}"
-        const val GOOGLE_PLACES = "com.google.android.libraries.places:places:${Versions.UI.GOOGLE_PLACES}"
+        const val GOOGLE_PLACES =
+            "com.google.android.libraries.places:places:${Versions.UI.GOOGLE_PLACES}"
+        const val GOOGLE_PLAY_CORE =
+            "com.google.android.play:core-ktx:${Versions.UI.GOOGLE_PLAY_CORE}"
     }
 
 
@@ -68,7 +71,12 @@ object AppDependencies {
 
 
     object Testing {
+        const val CORE = "androidx.arch.core:core-runtime:${Versions.Testing.CORE_TESTING}"
         const val JUNIT5 = "org.junit.jupiter:junit-jupiter:${Versions.Testing.JUNIT5}"
+        const val MOCKK = "io.mockk:mockk:${Versions.Testing.MOCKK}"
+        const val COROUTINES =
+            "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.Testing.COROUTINES}"
+
     }
 
 

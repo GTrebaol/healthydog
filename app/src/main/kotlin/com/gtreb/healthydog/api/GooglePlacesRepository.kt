@@ -4,15 +4,13 @@ import android.location.Location
 import com.gtreb.healthydog.BuildConfig
 import com.gtreb.healthydog.api.common.quickCallApi
 import com.gtreb.healthydog.common.implementation.TimberMonitor
-import com.gtreb.healthydog.common.navigation.IDispatcherService
 import com.gtreb.healthydog.model.VeterinaryPlace
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
 class GooglePlacesRepository(
     private val googleMapsApi: GoogleMapsApi,
-    private val logger: TimberMonitor,
-    private val dispatcher: IDispatcherService
+    private val logger: TimberMonitor
 ) {
 
     fun findNearbyVets(

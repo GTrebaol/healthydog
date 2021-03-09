@@ -1,7 +1,5 @@
 package com.gtreb.healthydog.common.implementation
 
-import android.content.ActivityNotFoundException
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -12,7 +10,6 @@ import androidx.fragment.app.Fragment
 import com.gtreb.healthydog.BR
 import com.gtreb.healthydog.common.navigation.NavigationItem
 import com.gtreb.healthydog.common.navigation.NavigationPublisher
-import com.gtreb.healthydog.utils.SettingsAction
 
 abstract class CustomFragment<VB : ViewDataBinding> : Fragment() {
 
@@ -45,15 +42,4 @@ abstract class CustomFragment<VB : ViewDataBinding> : Fragment() {
     }
 
     open fun onBackPressed(): Boolean = false
-
-
-    fun goSettings(action: SettingsAction) {
-        val i = Intent(action.value)
-        i.flags = Intent.FLAG_ACTIVITY_NEW_TASK
-        try {
-            requireActivity().startActivity(i)
-        } catch (e: ActivityNotFoundException) {
-            logger.logE(e.message.toString(), e)
-        }
-    }
 }

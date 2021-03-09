@@ -1,4 +1,4 @@
-package com.gtreb.healthydog.veterinaire
+package com.gtreb.healthydog.veterinary
 
 import com.gtreb.healthydog.common.interfaces.IKoinModule
 import org.koin.android.viewmodel.dsl.viewModel

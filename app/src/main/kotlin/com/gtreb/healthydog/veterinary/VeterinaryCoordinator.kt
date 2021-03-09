@@ -1,4 +1,4 @@
-package com.gtreb.healthydog.veterinaire
+package com.gtreb.healthydog.veterinary
 
 import com.gtreb.healthydog.common.interfaces.IRouter
 
@@ -11,5 +11,4 @@ class VeterinaryCoordinator(
         router.show(VeterinaryFragment::class.java)
     }
 
-    fun goToOtherAccount() = exit.exitToOtherAccounts()
 }

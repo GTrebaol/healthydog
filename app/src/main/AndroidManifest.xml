@@ -14,7 +14,10 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="${API_KEY}" />
-        <activity android:name=".HealthyDogActivity">
+        <activity
+            android:name=".HealthyDogActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -24,7 +27,6 @@
         <service
             android:name="MyNavigationService"
             android:foregroundServiceType="location" />
-
     </application>
 
 

@@ -13,8 +13,6 @@ import kotlin.reflect.KClass
  * @param title name displayed on top of navigation next to back button.
  * @param creation A nano second time for comparison between two elements.
  */
-// TODO : Add @kotlinx.parcelize.Parcelize and remove region Parcel when kapt plugin & kotlin-parcelize work together
-// https://youtrack.jetbrains.com/issue/KT-42652
 data class NavigationItem(
     val moduleName: String,
     val screenName: String,
@@ -24,10 +22,6 @@ data class NavigationItem(
 ) : Parcelable {
 
     companion object CREATOR : Parcelable.Creator<NavigationItem> {
-
-        // region Parcel
-        // TODO: Add @kotlinx.parcelize.Parcelize and delete this region when kapt plugin & kotlin-parcelize work together
-        // https://youtrack.jetbrains.com/issue/KT-42652
 
         override fun createFromParcel(parcel: Parcel): NavigationItem {
             return NavigationItem(parcel)
@@ -80,10 +74,6 @@ data class NavigationItem(
         screenName.qualifiedName ?: throw KClassQualifiedNameNotFound(),
         title, hasBack
     )
-
-    // region Parcel
-    // TODO: Add @kotlinx.parcelize.Parcelize and delete this region when kapt plugin & kotlin-parcelize work together
-    // https://youtrack.jetbrains.com/issue/KT-42652
 
     constructor(parcel: Parcel) : this(
         parcel.readString() ?: throw IllegalStateException("not a valid NavigationItem parcel"),

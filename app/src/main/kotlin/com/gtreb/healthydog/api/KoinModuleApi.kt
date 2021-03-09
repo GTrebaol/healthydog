@@ -14,7 +14,7 @@ internal object KoinModuleApi : IKoinModule {
                 Moshi.Builder().add(KotlinJsonAdapterFactory()).build()
             }
             single { provideRetrofitClient<GoogleMapsApi>(get(), get()) }
-            single { GooglePlacesRepository(get(), get(), get()) }
+            single { GooglePlacesRepository(get(), get()) }
         }
     )
 
