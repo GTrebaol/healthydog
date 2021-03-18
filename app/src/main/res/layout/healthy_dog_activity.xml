@@ -10,7 +10,7 @@
 
         <variable
             name="viewModel"
-            type="com.gtreb.healthydog.ui.logic.HealthyDogActivityViewModel" />
+            type="com.gtreb.healthydog.common.navigation.logic.HealthyDogActivityViewModel" />
     </data>
 
 
@@ -29,7 +29,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="parent" />
 
-        <com.gtreb.healthydog.ui.navbar.NavBarLayout
+        <com.gtreb.healthydog.common.navigation.ui.navbar.NavBarLayout
             android:id="@+id/navigation_bar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

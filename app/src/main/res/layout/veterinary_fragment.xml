@@ -13,7 +13,7 @@
 
         <variable
             name="viewModelVeterinaire"
-            type="com.gtreb.healthydog.veterinary.VeterinaryFragmentViewModel" />
+            type="com.gtreb.healthydog.modules.veterinary.presentation.VeterinaryFragmentViewModel" />
     </data>
 
     <LinearLayout

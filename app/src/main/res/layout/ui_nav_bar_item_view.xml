@@ -10,7 +10,7 @@
 
         <variable
             name="viewData"
-            type="com.gtreb.healthydog.ui.navbar.NavBarItemViewData" />
+            type="com.gtreb.healthydog.common.navigation.ui.navbar.NavBarItemViewData" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

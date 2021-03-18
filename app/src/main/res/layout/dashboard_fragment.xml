@@ -9,7 +9,7 @@
             type="androidx.lifecycle.LifecycleOwner" />
         <variable
             name="viewModelDashBoard"
-            type="com.gtreb.healthydog.dashboard.DashboardFragmentViewModel"/>
+            type="com.gtreb.healthydog.modules.dashboard.presentation.DashboardFragmentViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

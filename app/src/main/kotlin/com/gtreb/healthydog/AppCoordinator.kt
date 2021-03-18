@@ -2,10 +2,10 @@ package com.gtreb.healthydog
 
 import android.content.Context
 import com.gtreb.healthydog.common.interfaces.IRouter
-import com.gtreb.healthydog.dashboard.DashboardModule
-import com.gtreb.healthydog.evolution.EvolutionModule
+import com.gtreb.healthydog.modules.dashboard.DashboardModule
+import com.gtreb.healthydog.modules.evolution.EvolutionModule
+import com.gtreb.healthydog.modules.veterinary.VeterinaryModule
 import com.gtreb.healthydog.utils.toast
-import com.gtreb.healthydog.veterinary.VeterinaryModule
 import org.koin.core.KoinComponent
 import org.koin.core.inject
 

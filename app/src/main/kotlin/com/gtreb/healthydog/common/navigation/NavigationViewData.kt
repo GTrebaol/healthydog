@@ -1,10 +1,9 @@
 package com.gtreb.healthydog.common.navigation
 
 import android.content.Context
-import androidx.core.content.res.ResourcesCompat
 import com.gtreb.healthydog.R
-import com.gtreb.healthydog.ui.navbar.NavBarItemViewData
-import com.gtreb.healthydog.ui.navbar.NavBarLayoutData
+import com.gtreb.healthydog.common.navigation.ui.navbar.NavBarItemViewData
+import com.gtreb.healthydog.common.navigation.ui.navbar.NavBarLayoutData
 
 class NavigationViewData(private val context: Context) {
 

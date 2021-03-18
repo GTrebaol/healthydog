@@ -1,12 +1,11 @@
 package com.gtreb.healthydog
 
 import android.os.Bundle
-import android.view.Window
 import com.gtreb.healthydog.common.implementation.CustomActivity
 import com.gtreb.healthydog.common.interfaces.IRouter
 import com.gtreb.healthydog.common.navigation.NavigationListener
+import com.gtreb.healthydog.common.navigation.logic.HealthyDogActivityViewModel
 import com.gtreb.healthydog.databinding.HealthyDogActivityBinding
-import com.gtreb.healthydog.ui.logic.HealthyDogActivityViewModel
 import org.koin.android.ext.android.inject
 import org.koin.android.viewmodel.ext.android.viewModel
 import org.koin.androidx.fragment.android.setupKoinFragmentFactory

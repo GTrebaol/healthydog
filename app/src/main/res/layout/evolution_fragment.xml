@@ -9,7 +9,7 @@
             type="androidx.lifecycle.LifecycleOwner" />
         <variable
             name="viewModelEvolution"
-            type="com.gtreb.healthydog.evolution.EvolutionFragmentViewModel"/>
+            type="com.gtreb.healthydog.modules.evolution.presentation.EvolutionFragmentViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

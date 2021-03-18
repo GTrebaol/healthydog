@@ -1,6 +1,6 @@
 package com.gtreb.healthydog.api
 
-import com.gtreb.healthydog.model.VeterinarySearchResponse
+import com.gtreb.healthydog.modules.veterinary.domain.VeterinarySearchResponse
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query
