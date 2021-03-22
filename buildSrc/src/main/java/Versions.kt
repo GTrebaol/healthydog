@@ -50,6 +50,9 @@ object Versions {
         const val THREETENBP_ADAPTER = "1.4.0"
     }
 
+    object Database {
+        const val ROOM = "2.2.6"
+    }
 
     object UI {
         const val CONSTRAINT_LAYOUT = "2.0.0-beta6"

@@ -2,7 +2,7 @@ package com.gtreb.healthydog.modules.veterinary
 
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 
-class VeterinaireModuleEntry(
+class VeterinaryModuleEntry(
     private val coordinator: VeterinaryCoordinator
 ) : VeterinaryModule.ModuleEntry {
 

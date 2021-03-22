@@ -69,6 +69,12 @@ object AppDependencies {
             "com.squareup.moshi:moshi-adapters:${Versions.Api.JSON_MOSHI_ADAPTER}"
     }
 
+    object Database {
+        const val ROOM = "androidx.room:room-ktx:${Versions.Database.ROOM}"
+        const val ROOM_RUNTIME = "androidx.room:room-runtime:${Versions.Database.ROOM}"
+        const val ROOM_COMPILER = "androidx.room:room-compiler:${Versions.Database.ROOM}"
+    }
+
 
     object Testing {
         const val CORE = "androidx.arch.core:core-runtime:${Versions.Testing.CORE_TESTING}"

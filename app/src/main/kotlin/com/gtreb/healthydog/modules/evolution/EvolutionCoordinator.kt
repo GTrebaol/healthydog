@@ -12,5 +12,5 @@ class EvolutionCoordinator(
         router.show(EvolutionFragment::class.java)
     }
 
-    fun goToOtherAccount() = exit.exitToOtherAccounts()
+    fun goToSMI() = exit.exitToOtherAccounts()
 }

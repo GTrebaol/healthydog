@@ -11,8 +11,9 @@ import org.koin.dsl.module
 internal object DashboardKoinSubModule : IKoinModule {
     private val dashboardModule = module {
         fragment { DashboardFragment() }
-        viewModel { DashboardFragmentViewModel(get(), get(), get()) }
+        viewModel { DashboardFragmentViewModel(get(), get()) }
         single<DashboardModule.ModuleEntry> { DashboardModuleEntry(get()) }
+        single<DashboardModule.ModuleExit> { DashboardModuleExit(get()) }
     }
 
     override val modules: List<Module> = listOf(dashboardModule)

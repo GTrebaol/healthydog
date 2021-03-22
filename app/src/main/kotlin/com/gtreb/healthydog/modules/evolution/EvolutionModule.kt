@@ -5,9 +5,7 @@ import com.gtreb.healthydog.common.interfaces.IModuleExit
 
 object EvolutionModule {
     object Params {
-        const val CONTEXT = "EvolutionModule.Context"
-        const val PHONE_NUMBER = "EvolutionModule.PhoneNumber"
-        const val ACCOUNT_ID = "EvolutionModule.AccountId"
+        const val DOG_ID = "EvolutionModule.DogId"
     }
 
     interface ModuleEntry : IModuleEntry {

@@ -12,7 +12,8 @@ internal object VeterinaryKoinSubModule : IKoinModule {
     private val veterinaryModule = module {
         fragment { VeterinaryFragment() }
         viewModel { VeterinaryFragmentViewModel(get(), get(), get(), get()) }
-        single<VeterinaryModule.ModuleEntry> { VeterinaireModuleEntry(get()) }
+        single<VeterinaryModule.ModuleExit> { VeterinaryModuleExit(get()) }
+        single<VeterinaryModule.ModuleEntry> { VeterinaryModuleEntry(get()) }
     }
 
     override val modules: List<Module> = listOf(veterinaryModule)

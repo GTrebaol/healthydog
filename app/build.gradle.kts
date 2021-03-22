@@ -81,10 +81,8 @@ dependencies {
     implementation(AppDependencies.Android.LIFECYCLE_LIVEDATA)
     implementation(AppDependencies.Android.LIFECYCLE_VIEWMODEL)
 
-
     implementation(AppDependencies.Kotlin.KOTLIN_STDLIB_JDK_7)
     implementation(AppDependencies.EventBus.LOCAL_BROADCAST_MANAGER)
-
 
     implementation(AppDependencies.DependencyInjection.KOIN_CORE)
     implementation(AppDependencies.DependencyInjection.KOIN_ANDROID)
@@ -100,7 +98,6 @@ dependencies {
     implementation(AppDependencies.Network.OKHTTP_INTERCEPTOR)
     implementation(AppDependencies.Network.CONVERTER_SCALARS)
 
-
     implementation(AppDependencies.Api.JSON_MOSHI_KOTLIN)
     implementation(AppDependencies.Api.JSON_MOSHI_ADAPTER)
 
@@ -110,12 +107,14 @@ dependencies {
     implementation(AppDependencies.UI.GOOGLE_PLACES)
     implementation(AppDependencies.UI.GOOGLE_PLAY_CORE)
 
+    implementation(AppDependencies.Database.ROOM)
+    implementation(AppDependencies.Database.ROOM_COMPILER)
+    implementation(AppDependencies.Database.ROOM_RUNTIME)
 
     implementation(AppDependencies.Asynchronous.COROUTINES_CORE)
     implementation(AppDependencies.Asynchronous.COROUTINES_ANDROID)
 
     implementation(AppDependencies.Logging.TIMBER)
-
 
     //test libs
     testImplementation(AppDependencies.Testing.JUNIT5)
