@@ -17,11 +17,11 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.gtreb.healthydog.R
-import com.gtreb.healthydog.common.implementation.CustomFragment
-import com.gtreb.healthydog.common.implementation.PermissionHandler
-import com.gtreb.healthydog.common.implementation.handlePermission
-import com.gtreb.healthydog.common.implementation.requestPermission
+import com.gtreb.healthydog.common.implementations.PermissionHandler
+import com.gtreb.healthydog.common.implementations.handlePermission
+import com.gtreb.healthydog.common.implementations.requestPermission
 import com.gtreb.healthydog.common.navigation.NavigationItem
+import com.gtreb.healthydog.common.presentation.CustomFragment
 import com.gtreb.healthydog.databinding.VeterinaryFragmentBinding
 import com.gtreb.healthydog.modules.veterinary.VeterinaryModule
 import com.gtreb.healthydog.modules.veterinary.domain.VeterinaryPlace
@@ -86,7 +86,8 @@ class VeterinaryFragment : CustomFragment<VeterinaryFragmentBinding>(), OnMapRea
     }
 
     private fun initPermissionsHandler() {
-        handlePermission(PermissionHandler.AccessFineLocation,
+        handlePermission(
+            PermissionHandler.AccessFineLocation,
             onGranted = {
                 locationPermissionGranted = true
                 startLocationManager()

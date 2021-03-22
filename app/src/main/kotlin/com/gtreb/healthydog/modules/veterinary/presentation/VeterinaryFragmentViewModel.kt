@@ -4,15 +4,14 @@ import android.app.Application
 import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.location.Location
-import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.model.LatLng
-import com.gtreb.healthydog.common.implementation.TimberMonitor
+import com.gtreb.healthydog.common.implementations.TimberMonitor
 import com.gtreb.healthydog.common.navigation.IDispatcherService
-import com.gtreb.healthydog.modules.veterinary.VeterinaryCoordinator
+import com.gtreb.healthydog.common.presentation.CustomViewModel
 import com.gtreb.healthydog.modules.veterinary.data.VeterinaryRepository
 import com.gtreb.healthydog.modules.veterinary.domain.VeterinaryPlace
 import com.gtreb.healthydog.utils.Constants
@@ -26,15 +25,14 @@ class VeterinaryFragmentViewModel(
     private val dispatcher: IDispatcherService,
     private val googleRepository: VeterinaryRepository,
     private val logger: TimberMonitor,
-    private val coordinator: VeterinaryCoordinator,
     application: Application,
-) : AndroidViewModel(application) {
+) : CustomViewModel(application) {
 
     lateinit var googleMap: GoogleMap
     lateinit var lastKnownLocation: Location
     var vetLocations = MutableLiveData<List<VeterinaryPlace>>()
 
-    fun load() {
+    override fun load() {
         viewModelScope.launch(dispatcher.io) {
             val placesFlow = googleRepository.findNearbyVets(lastKnownLocation, DEFAULT_RADIUS)
             placesFlow.collect {

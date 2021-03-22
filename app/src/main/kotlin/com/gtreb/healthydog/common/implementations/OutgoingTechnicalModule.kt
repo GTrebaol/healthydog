@@ -1,4 +1,4 @@
-package com.gtreb.healthydog.common.interfaces
+package com.gtreb.healthydog.common.implementations
 
 import android.app.Activity
 import android.content.ActivityNotFoundException
@@ -9,7 +9,8 @@ import androidx.core.content.ContextCompat.startActivity
 import com.google.android.play.core.ktx.launchReview
 import com.google.android.play.core.ktx.requestReview
 import com.google.android.play.core.review.ReviewManagerFactory
-import com.gtreb.healthydog.common.implementation.TimberMonitor
+import com.gtreb.healthydog.common.interfaces.IOutgoingModule
+import com.gtreb.healthydog.common.interfaces.IOutgoingTechnicalCallback
 import com.gtreb.healthydog.common.navigation.IDispatcherService
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch

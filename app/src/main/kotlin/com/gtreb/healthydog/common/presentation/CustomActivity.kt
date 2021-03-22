@@ -1,4 +1,4 @@
-package com.gtreb.healthydog.common.implementation
+package com.gtreb.healthydog.common.presentation
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

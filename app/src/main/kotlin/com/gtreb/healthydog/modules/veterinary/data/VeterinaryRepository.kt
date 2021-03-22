@@ -4,7 +4,7 @@ import android.location.Location
 import com.gtreb.healthydog.BuildConfig
 import com.gtreb.healthydog.api.GoogleMapsApi
 import com.gtreb.healthydog.api.common.quickCallApi
-import com.gtreb.healthydog.common.implementation.TimberMonitor
+import com.gtreb.healthydog.common.implementations.TimberMonitor
 import com.gtreb.healthydog.modules.veterinary.domain.VeterinaryPlace
 import com.gtreb.healthydog.modules.veterinary.presentation.IVeterinaryRepository
 import kotlinx.coroutines.flow.Flow

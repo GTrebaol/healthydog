@@ -1,6 +1,6 @@
 package com.gtreb.healthydog.api.common
 
-import com.gtreb.healthydog.common.implementation.TimberMonitor
+import com.gtreb.healthydog.common.implementations.TimberMonitor
 import com.squareup.moshi.Moshi
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor

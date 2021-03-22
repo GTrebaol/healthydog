@@ -1,4 +1,4 @@
-package com.gtreb.healthydog.common.implementation
+package com.gtreb.healthydog.common.implementations
 
 import android.os.Bundle
 import androidx.fragment.app.DialogFragment
@@ -6,12 +6,10 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentManager.POP_BACK_STACK_INCLUSIVE
 import com.gtreb.healthydog.common.interfaces.IRouter
+import com.gtreb.healthydog.common.presentation.CustomFragment
 import org.koin.core.KoinComponent
-import org.koin.core.inject
 
-class Router : IRouter, KoinComponent {
-
-    private val monitor: TimberMonitor by inject()
+class Router(private val monitor: TimberMonitor) : IRouter, KoinComponent {
 
     companion object {
         private const val ROOT_BACK_STACK_NAME = "ROOT_BACK_STACK_NAME"

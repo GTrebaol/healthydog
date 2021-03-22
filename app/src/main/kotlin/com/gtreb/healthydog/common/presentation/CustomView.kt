@@ -1,4 +1,4 @@
-package com.gtreb.healthydog.common.ui
+package com.gtreb.healthydog.common.presentation
 
 import android.content.Context
 import android.util.AttributeSet

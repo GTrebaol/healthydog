@@ -1,6 +1,6 @@
 package com.gtreb.healthydog.api.common
 
-import com.gtreb.healthydog.common.implementation.TimberMonitor
+import com.gtreb.healthydog.common.implementations.TimberMonitor
 
 fun <T : Any> ApiResult<T>.handle(
     monitor: TimberMonitor,

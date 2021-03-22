@@ -1,4 +1,4 @@
-package com.gtreb.healthydog.common.implementation
+package com.gtreb.healthydog.common.implementations
 
 import android.Manifest
 import android.content.Intent

@@ -1,4 +1,4 @@
-package com.gtreb.healthydog.common.implementation
+package com.gtreb.healthydog.common.presentation
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,6 +8,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import com.gtreb.healthydog.BR
+import com.gtreb.healthydog.common.implementations.TimberMonitor
 import com.gtreb.healthydog.common.navigation.NavigationItem
 import com.gtreb.healthydog.common.navigation.NavigationPublisher
 

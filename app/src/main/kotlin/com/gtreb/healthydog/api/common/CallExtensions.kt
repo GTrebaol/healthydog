@@ -1,6 +1,6 @@
 package com.gtreb.healthydog.api.common
 
-import com.gtreb.healthydog.common.implementation.TimberMonitor
+import com.gtreb.healthydog.common.implementations.TimberMonitor
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.single

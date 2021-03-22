@@ -3,7 +3,7 @@ package com.gtreb.healthydog.common.navigation.ui.navbar
 import android.content.Context
 import android.util.AttributeSet
 import com.gtreb.healthydog.R
-import com.gtreb.healthydog.common.ui.CustomView
+import com.gtreb.healthydog.common.presentation.CustomView
 import com.gtreb.healthydog.databinding.UiNavBarItemViewBinding
 
 /**

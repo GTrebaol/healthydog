@@ -8,10 +8,10 @@ import org.koin.androidx.fragment.dsl.fragment
 import org.koin.core.module.Module
 import org.koin.dsl.module
 
-internal object KoinSubModuleVeterinary : IKoinModule {
+internal object VeterinaryKoinSubModule : IKoinModule {
     private val veterinaryModule = module {
         fragment { VeterinaryFragment() }
-        viewModel { VeterinaryFragmentViewModel(get(), get(), get(), get(), get()) }
+        viewModel { VeterinaryFragmentViewModel(get(), get(), get(), get()) }
         single<VeterinaryModule.ModuleEntry> { VeterinaireModuleEntry(get()) }
     }
 
