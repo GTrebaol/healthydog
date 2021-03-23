@@ -4,7 +4,7 @@ package com.gtreb.healthydog.common.interfaces
 import android.os.Bundle
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
-import com.gtreb.healthydog.common.toBundle
+import com.gtreb.healthydog.utils.toBundle
 
 interface IRouter {
 

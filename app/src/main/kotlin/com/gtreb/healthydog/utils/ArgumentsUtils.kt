@@ -1,4 +1,4 @@
-package com.gtreb.healthydog.common
+package com.gtreb.healthydog.utils
 
 import android.os.Binder
 import android.os.Bundle

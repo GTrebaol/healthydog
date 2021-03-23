@@ -94,7 +94,6 @@ object AppDependencies {
 
     }
 
-
     object EventBus {
         const val LOCAL_BROADCAST_MANAGER =
             "androidx.localbroadcastmanager:localbroadcastmanager:${Versions.EventBus.LOCAL_BROADCAST_MANAGER}"
@@ -102,16 +101,5 @@ object AppDependencies {
 
     object Logging {
         const val TIMBER = "com.jakewharton.timber:timber:${Versions.Logging.TIMBER}"
-    }
-
-    object Monitoring {
-        // When using the BoM, you don't specify versions in Firebase library dependencies
-        const val FIREBASE_BOM = "com.google.firebase:firebase-bom:${Versions.Monitoring.FIREBASE_BOM}"
-        const val FIREBASE_ANALYTICS = "com.google.firebase:firebase-analytics-ktx"
-        const val FIREBASE_CRASHLYTICS = "com.google.firebase:firebase-crashlytics-ktx"
-
-        // Override dependencies to match with BoM 26.0.0 - libs used in Anrlib
-        const val FIREBASE_ML_VISION = "com.google.firebase:firebase-ml-vision:${Versions.Monitoring.FIREBASE_ML_VISION}"
-        const val GOOGLE_SERVICES_VISON = "com.google.android.gms:play-services-vision:${Versions.Monitoring.GOOGLE_SERVICES_VISON}"
     }
 }

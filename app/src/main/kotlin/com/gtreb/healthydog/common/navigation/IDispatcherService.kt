@@ -16,15 +16,8 @@ interface IDispatcherService {
         override val value: QualifierValue get() = "DispatcherService.Test"
     }
 
-    /** @see Dispatchers.IO */
     val io: CoroutineDispatcher
-
-    /** @see Dispatchers.Main */
     val main: CoroutineDispatcher
-
-    /** @see Dispatchers.Default */
     val default: CoroutineDispatcher
-
-    /** @see Dispatchers.Unconfined */
     val unconfined: CoroutineDispatcher
 }

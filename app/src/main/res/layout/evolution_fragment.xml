@@ -37,6 +37,7 @@
                 android:maxHeight="@dimen/margin_xxxlarge"
                 android:minWidth="@dimen/margin_xxxlarge"
                 android:minHeight="@dimen/margin_xxxlarge"
+                app:cornerRadius="1000dp"
                 android:src="@{viewModelEvolution.dogPicture.path, default=`@drawable/placeholder`}" />
 
             <TextView

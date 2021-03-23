@@ -40,9 +40,9 @@ class VeterinaryFragmentViewModel(
     var goToSettings = MutableLiveData(true)
     var gpsVisibility = MutableLiveData<Int>()
     var mapAndListVisibility = MutableLiveData<Int>()
-    private lateinit var locationManager: LocationManager
+    private var locationManager: LocationManager? = null
 
-    private val defaultLocation = LatLng(-33.8523341, 151.2106085)
+    private val defaultLocation = LatLng(48.3987363, -4.4164396)
     var locationPermissionGranted = false
     var vetLocations = MutableLiveData<List<VeterinaryPlace>>()
 
@@ -115,7 +115,7 @@ class VeterinaryFragmentViewModel(
                         updatePosition()
                     } else {
                         logger.logD("ASKING FOR LOCATION UPDATE")
-                        locationManager.requestLocationUpdates(
+                        locationManager!!.requestLocationUpdates(
                             LocationManager.GPS_PROVIDER,
                             0L,
                             0f,
@@ -171,9 +171,11 @@ class VeterinaryFragmentViewModel(
 
 
     fun updateVisibility() {
-        val providerEnabled = locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)
-        gpsVisibility.value = if (providerEnabled) View.VISIBLE else View.GONE
-        mapAndListVisibility.value = if (!providerEnabled) View.GONE else View.VISIBLE
+        if( null != locationManager) {
+            val providerEnabled = locationManager!!.isProviderEnabled(LocationManager.GPS_PROVIDER)
+            gpsVisibility.value = if (providerEnabled) View.VISIBLE else View.GONE
+            mapAndListVisibility.value = if (!providerEnabled) View.GONE else View.VISIBLE
+        }
     }
 
 }

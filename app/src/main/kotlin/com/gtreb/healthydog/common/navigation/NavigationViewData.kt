@@ -11,23 +11,12 @@ class NavigationViewData(private val context: Context) {
 
         /** Special index to select nothing */
         const val INDEX_NAVIGATION_NONE = -1
-
-        /** index of element [navigationHome] inside [navigationItems] */
         const val INDEX_NAVIGATION_HOME = 0
-
-        /** index of element [navigationAccounts] inside [navigationItems] */
         const val INDEX_NAVIGATION_EVOLUTION = 1
-
-        /** index of element [navigationTransfer] inside [navigationItems] */
         const val INDEX_NAVIGATION_CALENDAR = 2
-
-        /** index of element [navigationVirtualis] inside [navigationItems] */
         const val INDEX_NAVIGATION_BARF_FOOD = 3
-
-        /** index of element [navigationMenu] inside [navigationItems] */
         const val INDEX_NAVIGATION_EMERGENCY_VET = 4
     }
-
 
     private val navigationHome = NavBarItemViewData().apply {
         icon.value = R.drawable.icone_accueil

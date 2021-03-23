@@ -23,7 +23,7 @@ class NavigationPublisher(
 
     @OnLifecycleEvent(Lifecycle.Event.ON_START)
     fun publishEventStart() = publishEventStart(navigationItemProvider())
-    fun publishEventStart(item: NavigationItem?) = InternalNavigation.publishEventStart(context, publisherId, item)
+    private fun publishEventStart(item: NavigationItem?) = InternalNavigation.publishEventStart(context, publisherId, item)
 
     @OnLifecycleEvent(Lifecycle.Event.ON_STOP)
     fun publishEventStop() = InternalNavigation.publishEventStop(context, publisherId)

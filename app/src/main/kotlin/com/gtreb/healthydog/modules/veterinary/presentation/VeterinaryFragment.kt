@@ -59,18 +59,6 @@ class VeterinaryFragment : CustomFragment<VeterinaryFragmentBinding>(), OnMapRea
         mapView.onCreate(savedInstanceState)
         mapView.onResume()
         mapView.getMapAsync(this)
-
-
-        viewModelVeterinary.goToSettings.observe(lifecycleOwner) {
-            try {
-                requireActivity().runOnUiThread {
-                    startActivity(Intent(SettingsAction.GPS.value))
-                }
-            } catch (e: ActivityNotFoundException) {
-                logger.logE(e.message.toString(), e)
-            }
-
-        }
     }
 
     private fun initPermissionsHandler() {

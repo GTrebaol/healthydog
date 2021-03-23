@@ -12,6 +12,7 @@ import com.gtreb.healthydog.common.navigation.IDispatcherService
 import com.gtreb.healthydog.common.presentation.CustomViewModel
 import com.gtreb.healthydog.modules.evolution.EvolutionCoordinator
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.single
 import kotlinx.coroutines.flow.zip
 import kotlinx.coroutines.launch
@@ -52,7 +53,7 @@ class EvolutionFragmentViewModel(
             dogPicture.postValue(picture)
             delay(200)
             isLoading.postValue(false)
-        }.single()
+        }.collect()
     }
 
 }

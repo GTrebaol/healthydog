@@ -51,7 +51,12 @@
     <string name="test_navigation_calendar">@string/navigation_calendar</string>
     <string name="test_navigation_barf_food">@string/navigation_barf_food</string>
     <string name="test_navigation_emergency_vet">@string/navigation_emergency_vet</string>
+    <string name="add_data_evolution">Ajouter une mesure</string>
+    <string name="graph_content_description">TODO</string>
     <string name="permission_denied">denied !</string>
     <string name="permission_explanation">explanation !</string>
     <string name="permission_required_text">Yen a besoin !</string>
+
+    <string name="weight">Poids</string>
+    <string name="height">Taille</string>
 </resources>
