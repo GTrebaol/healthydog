@@ -1,7 +1,7 @@
 object Versions {
 
     object Gradle {
-        const val GRADLE_VERSION = "4.0.1"
+        const val GRADLE_VERSION = "4.1.3"
     }
 
     object Kotlin {
@@ -60,7 +60,8 @@ object Versions {
         const val CHART = "3.1.0"
         const val GOOGLE_PLACES = "2.4.0"
         const val GOOGLE_PLAY_CORE = "1.8.1"
-
+        const val RECYCLER_VIEW = "1.2.0-beta02"
+        const val SUPPORT_DESIGN = "28.0.0"
     }
 
     object Logging {

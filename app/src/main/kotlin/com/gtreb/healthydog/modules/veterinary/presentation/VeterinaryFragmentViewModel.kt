@@ -8,6 +8,7 @@ import android.content.Intent
 import android.location.Location
 import android.location.LocationListener
 import android.location.LocationManager
+import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
@@ -170,6 +171,11 @@ class VeterinaryFragmentViewModel(
     }
 
     override fun onProviderEnabled(provider: String) {
+        updateVisibility()
+    }
+
+
+    override fun onStatusChanged(provider: String?, status: Int, extras: Bundle?) {
         updateVisibility()
     }
 

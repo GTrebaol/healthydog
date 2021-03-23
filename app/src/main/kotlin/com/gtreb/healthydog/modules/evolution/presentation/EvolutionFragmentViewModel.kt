@@ -6,6 +6,7 @@ import androidx.lifecycle.viewModelScope
 import com.gtreb.healthydog.common.data.IDogsRepository
 import com.gtreb.healthydog.common.domain.Dog
 import com.gtreb.healthydog.common.domain.EvolutionData
+import com.gtreb.healthydog.common.implementations.TimberMonitor
 import com.gtreb.healthydog.common.navigation.IDispatcherService
 import com.gtreb.healthydog.common.presentation.CustomViewModel
 import com.gtreb.healthydog.modules.evolution.EvolutionCoordinator
@@ -18,9 +19,10 @@ class EvolutionFragmentViewModel(
     private val dogsRepository: IDogsRepository,
     private val dispatcher: IDispatcherService,
     private val coordinator: EvolutionCoordinator,
+    private val monitor: TimberMonitor
 ) : CustomViewModel(application) {
 
-    private lateinit var dogsEvolutionData: MutableLiveData<List<EvolutionData>>
+    private var dogsEvolutionData = MutableLiveData<List<EvolutionData>>()
     private lateinit var dogId: String
     private lateinit var dogModel: Dog
 
@@ -35,15 +37,19 @@ class EvolutionFragmentViewModel(
     private fun getDog(dogId: String) = viewModelScope.launch(dispatcher.io) {
         dogModel = dogsRepository.getDog(dogId).singleOrNull() ?: run {
             viewModelScope.launch(dispatcher.main) { coordinator.goToSMI() }
-            getDogData()
             return@launch
         }
+        monitor.logD(dogModel.toString())
+        getDogData()
     }
 
     private fun getDogData() {
         viewModelScope.launch(dispatcher.io) {
-            dogsRepository.getEvolutionDataForDog(dogId).collect {
+            dogsRepository.getEvolutionDataForDog(dogId).collect { it ->
                 dogsEvolutionData.postValue(it)
+                it.forEach { detail ->
+                    monitor.logD(detail.toString())
+                }
             }
         }
     }

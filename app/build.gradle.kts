@@ -106,9 +106,11 @@ dependencies {
     implementation(AppDependencies.UI.GRAPH)
     implementation(AppDependencies.UI.GOOGLE_PLACES)
     implementation(AppDependencies.UI.GOOGLE_PLAY_CORE)
+    implementation(AppDependencies.UI.RECYCLER_VIEW)
+    implementation(AppDependencies.UI.SUPPORT_DESIGN)
 
     implementation(AppDependencies.Database.ROOM)
-    implementation(AppDependencies.Database.ROOM_COMPILER)
+    kapt(AppDependencies.Database.ROOM_COMPILER)
     implementation(AppDependencies.Database.ROOM_RUNTIME)
 
     implementation(AppDependencies.Asynchronous.COROUTINES_CORE)

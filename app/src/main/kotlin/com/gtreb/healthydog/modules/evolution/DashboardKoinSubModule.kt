@@ -11,7 +11,7 @@ import org.koin.dsl.module
 internal object KoinSubModuleEvolution : IKoinModule {
     private val evolutionModule = module {
         fragment { EvolutionFragment() }
-        viewModel { EvolutionFragmentViewModel(get(), get(), get(), get()) }
+        viewModel { EvolutionFragmentViewModel(get(), get(), get(), get(), get()) }
         single<EvolutionModule.ModuleEntry> { EvolutionModuleEntry(get()) }
         single<EvolutionModule.ModuleExit> { EvolutionModuleExit(get()) }
     }

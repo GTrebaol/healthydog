@@ -17,7 +17,7 @@ object AppDependencies {
         const val APP_COMPAT = "androidx.appcompat:appcompat:${Versions.Android.APP_COMPAT}"
         const val ANDROIDX_CORE = "androidx.core:core-ktx:${Versions.Android.ANDROIDX_CORE}"
         const val ANDROIDX_FRAGMENT =
-            "androidx.fragment:fragment:${Versions.Android.ANDROIX_FRAGMENT}"
+            "androidx.fragment:fragment-ktx:${Versions.Android.ANDROIX_FRAGMENT}"
         const val LIFECYCLE_LIVEDATA =
             "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.Android.LIFECYCLE}"
         const val LIFECYCLE_VIEWMODEL =
@@ -40,7 +40,12 @@ object AppDependencies {
     }
 
     object UI {
-        const val CONSTRAINT_LAYOUT = "androidx.constraintlayout:constraintlayout:${Versions.UI.CONSTRAINT_LAYOUT}"
+        const val CONSTRAINT_LAYOUT =
+            "androidx.constraintlayout:constraintlayout:${Versions.UI.CONSTRAINT_LAYOUT}"
+        const val RECYCLER_VIEW = "androidx.recyclerview:recyclerview:${Versions.UI.RECYCLER_VIEW}"
+        const val SUPPORT_DESIGN = "com.android.support:design:${Versions.UI.SUPPORT_DESIGN}"
+
+
         const val LOTTIE = "com.airbnb.android:lottie:${Versions.UI.LOTTIE}"
         const val GRAPH = "com.github.PhilJay:MPAndroidChart:${Versions.UI.CHART}"
         const val GOOGLE_PLACES =
