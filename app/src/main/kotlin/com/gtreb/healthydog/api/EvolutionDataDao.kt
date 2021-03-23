@@ -2,24 +2,27 @@ package com.gtreb.healthydog.api
 
 import androidx.room.*
 import com.gtreb.healthydog.common.domain.EvolutionData
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface EvolutionDataDao {
 
     @Query("SELECT * FROM evolution WHERE dogId = :id")
-    suspend fun findEvolutionDataByDogId(id: Long): List<EvolutionData>
+    fun findEvolutionDataByDogId(id: Long): Flow<List<EvolutionData>>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun insert(evolutionData: EvolutionData): Long
+    fun insert(evolutionData: EvolutionData): Long
 
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun insert(vararg evolutionDatas: EvolutionData)
+    fun insert(vararg evolutionDatas: EvolutionData): List<Long>
 
+    @Query("DELETE FROM evolution")
+    fun deleteAll()
 
     @Update(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun update(evolutionData: EvolutionData)
+    fun update(evolutionData: EvolutionData)
 
     @Query("SELECT * FROM evolution WHERE evolutionId = :id")
-    fun getEvolutionData(id: Long): EvolutionData
+    fun getEvolutionData(id: Long): Flow<EvolutionData>
 }

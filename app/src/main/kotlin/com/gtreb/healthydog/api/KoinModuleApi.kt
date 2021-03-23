@@ -21,7 +21,8 @@ internal object KoinModuleApi : IKoinModule {
             single { provideRetrofitClient<GoogleMapsApi>(get(), get()) }
             single { get<AppDataBase>().DogsDao() }
             single { get<AppDataBase>().EvolutionDataDao() }
-            single<IDogsRepository> { DogsRepository(get(), get(), get()) }
+            single { get<AppDataBase>().PictureDao() }
+            single<IDogsRepository> { DogsRepository(get(), get(), get(), get()) }
             single<IVeterinaryRepository> { VeterinaryRepository(get(), get()) }
         }
     )

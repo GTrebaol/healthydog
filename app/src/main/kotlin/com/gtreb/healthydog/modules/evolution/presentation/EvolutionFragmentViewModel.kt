@@ -6,12 +6,14 @@ import androidx.lifecycle.viewModelScope
 import com.gtreb.healthydog.common.data.IDogsRepository
 import com.gtreb.healthydog.common.domain.Dog
 import com.gtreb.healthydog.common.domain.EvolutionData
+import com.gtreb.healthydog.common.domain.Picture
 import com.gtreb.healthydog.common.implementations.TimberMonitor
 import com.gtreb.healthydog.common.navigation.IDispatcherService
 import com.gtreb.healthydog.common.presentation.CustomViewModel
 import com.gtreb.healthydog.modules.evolution.EvolutionCoordinator
-import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.flow.singleOrNull
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.single
+import kotlinx.coroutines.flow.zip
 import kotlinx.coroutines.launch
 
 class EvolutionFragmentViewModel(
@@ -22,9 +24,11 @@ class EvolutionFragmentViewModel(
     private val monitor: TimberMonitor
 ) : CustomViewModel(application) {
 
-    private var dogsEvolutionData = MutableLiveData<List<EvolutionData>>()
     private lateinit var dogId: String
-    private lateinit var dogModel: Dog
+    var dogsEvolutionData = MutableLiveData<List<EvolutionData>>()
+    var dogModel = MutableLiveData<Dog>()
+    var dogPicture = MutableLiveData<Picture>()
+    var isLoading = MutableLiveData(true)
 
     fun init(dogId: String) {
         this.dogId = dogId
@@ -35,24 +39,20 @@ class EvolutionFragmentViewModel(
     }
 
     private fun getDog(dogId: String) = viewModelScope.launch(dispatcher.io) {
-        dogModel = dogsRepository.getDog(dogId).singleOrNull() ?: run {
-            viewModelScope.launch(dispatcher.main) { coordinator.goToSMI() }
-            return@launch
-        }
-        monitor.logD(dogModel.toString())
-        getDogData()
-    }
+        val dogFlow = dogsRepository.getDogs()
+        val evolutionFlow = dogsRepository.getEvolutionDataForDog(dogId)
+        val pictureFlow = dogsRepository.getFavoritePictureForDog(dogId)
 
-    private fun getDogData() {
-        viewModelScope.launch(dispatcher.io) {
-            dogsRepository.getEvolutionDataForDog(dogId).collect { it ->
-                dogsEvolutionData.postValue(it)
-                it.forEach { detail ->
-                    monitor.logD(detail.toString())
-                }
-            }
-        }
-    }
+        dogFlow.zip(evolutionFlow) { dogs: List<Dog>, list: List<EvolutionData> ->
+            dogModel.postValue(dogs.first())
+            dogsEvolutionData.postValue(list)
+            monitor.logD(dogModel.value.toString())
 
+        }.zip(pictureFlow) { _, picture: Picture? ->
+            dogPicture.postValue(picture)
+            delay(200)
+            isLoading.postValue(false)
+        }.single()
+    }
 
 }

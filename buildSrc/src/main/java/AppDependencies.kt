@@ -52,6 +52,10 @@ object AppDependencies {
             "com.google.android.libraries.places:places:${Versions.UI.GOOGLE_PLACES}"
         const val GOOGLE_PLAY_CORE =
             "com.google.android.play:core-ktx:${Versions.UI.GOOGLE_PLAY_CORE}"
+
+        const val ROUNDEDIMAGEVIEW =
+            "com.rishabhharit.roundedimageview:RoundedImageView:${Versions.UI.ROUNDEDIMAGEVIEW}"
+
     }
 
 

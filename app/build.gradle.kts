@@ -108,6 +108,7 @@ dependencies {
     implementation(AppDependencies.UI.GOOGLE_PLAY_CORE)
     implementation(AppDependencies.UI.RECYCLER_VIEW)
     implementation(AppDependencies.UI.SUPPORT_DESIGN)
+    implementation(AppDependencies.UI.ROUNDEDIMAGEVIEW)
 
     implementation(AppDependencies.Database.ROOM)
     kapt(AppDependencies.Database.ROOM_COMPILER)

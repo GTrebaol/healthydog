@@ -1,30 +1,30 @@
 package com.gtreb.healthydog.api
 
-import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.gtreb.healthydog.common.domain.Dog
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface DogsDao {
 
     @Query("SELECT * FROM dog WHERE dogId = :id LIMIT 1")
-    suspend fun findDogById(id: Long): Dog?
+    fun findDogById(id: Long): Flow<Dog?>
 
     @Query("SELECT * FROM dog WHERE name = :fullName LIMIT 1")
-    suspend fun findDogByName(fullName: String?): Dog?
+    fun findDogByName(fullName: String): Flow<Dog?>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun insert(dog: Dog): Long
+    fun insert(dog: Dog): Long
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun insert(vararg dogs: Dog)
+    fun insert(vararg dogs: Dog): List<Long>
 
     @Query("DELETE FROM dog")
-    suspend fun deleteAll()
+    fun deleteAll()
 
     @Update(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun update(director: Dog)
+    fun update(dog: Dog)
 
-    @get:Query("SELECT * FROM dog ORDER BY name ASC")
-    val allDogs: LiveData<List<Dog>>
+    @Query("SELECT * FROM dog ORDER BY name ASC")
+    fun allDogs(): Flow<List<Dog>>
 }

@@ -62,6 +62,7 @@ object Versions {
         const val GOOGLE_PLAY_CORE = "1.8.1"
         const val RECYCLER_VIEW = "1.2.0-beta02"
         const val SUPPORT_DESIGN = "28.0.0"
+        const val ROUNDEDIMAGEVIEW = "0.8.4"
     }
 
     object Logging {

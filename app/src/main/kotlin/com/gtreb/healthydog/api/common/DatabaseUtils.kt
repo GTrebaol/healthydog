@@ -3,8 +3,10 @@ package com.gtreb.healthydog.api.common
 import com.gtreb.healthydog.api.AppDataBase
 import com.gtreb.healthydog.api.DogsDao
 import com.gtreb.healthydog.api.EvolutionDataDao
+import com.gtreb.healthydog.api.PictureDao
 import com.gtreb.healthydog.common.domain.Dog
 import com.gtreb.healthydog.common.domain.EvolutionData
+import com.gtreb.healthydog.common.domain.Picture
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import java.util.*
@@ -15,16 +17,17 @@ suspend fun populateDatabase(database: AppDataBase?) {
         withContext(Dispatchers.IO) {
             val dogsDao: DogsDao = db.DogsDao()
             val evolutionDataDao: EvolutionDataDao = db.EvolutionDataDao()
+            val pictureDao: PictureDao = db.PictureDao()
 
             dogsDao.deleteAll()
+            evolutionDataDao.deleteAll()
+            pictureDao.deleteAll()
 
             val dogOne = Dog(
                 name = "Lucky", race = "Berger Blanc Suisse", birthdate = Date(1603900894)
             )
-            val dogTwo = Dog(name = "Enez", race = "Bauceron", birthdate = Date(1256745694))
 
             val dogOneId = dogsDao.insert(dogOne)
-            val dogOneTwo = dogsDao.insert(dogOne)
 
             val evolutionDataOne = EvolutionData(
                 date = Date(1611331903),
@@ -45,7 +48,11 @@ suspend fun populateDatabase(database: AppDataBase?) {
                 dogId = dogOneId
             )
 
+            val pictureOne =
+                Picture(dogId = dogOneId, path = "/pictures/pictureone.jpg", isFavorite = true)
+
             evolutionDataDao.insert(evolutionDataOne, evolutionDataTwo, evolutionDataThree)
+            pictureDao.insert(pictureOne)
         }
     }
 }

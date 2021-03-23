@@ -10,15 +10,17 @@ import com.gtreb.healthydog.api.common.DateConverter
 import com.gtreb.healthydog.api.common.populateDatabase
 import com.gtreb.healthydog.common.domain.Dog
 import com.gtreb.healthydog.common.domain.EvolutionData
+import com.gtreb.healthydog.common.domain.Picture
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
-@Database(entities = [Dog::class, EvolutionData::class], version = 1)
+@Database(entities = [Dog::class, EvolutionData::class, Picture::class], version = 2)
 @TypeConverters(DateConverter::class)
 abstract class AppDataBase : RoomDatabase() {
     abstract fun DogsDao(): DogsDao
     abstract fun EvolutionDataDao(): EvolutionDataDao
+    abstract fun PictureDao(): PictureDao
 
     companion object {
         @Volatile
@@ -45,17 +47,19 @@ abstract class AppDataBase : RoomDatabase() {
                             AppDataBase::class.java,
                             DATABASE_NAME
                         )
-                            //.allowMainThreadQueries() // Uncomment if you don't want to use RxJava or coroutines just yet (blocks UI thread)
                             .addCallback(object : Callback() {
                                 override fun onCreate(db: SupportSQLiteDatabase) {
                                     super.onCreate(db)
                                     GlobalScope.launch(Dispatchers.IO) { populateDatabase(instance) }
                                 }
-                            }).build()
+                            })
+                            .fallbackToDestructiveMigration()
+                            .build()
                     }
                 }
             }
-
+            //Let's open the database
+            instance?.isOpen
             return instance!!
         }
 

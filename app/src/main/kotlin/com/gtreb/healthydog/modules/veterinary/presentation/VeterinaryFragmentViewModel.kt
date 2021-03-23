@@ -2,9 +2,7 @@ package com.gtreb.healthydog.modules.veterinary.presentation
 
 import android.annotation.SuppressLint
 import android.app.Application
-import android.content.ActivityNotFoundException
 import android.content.Context
-import android.content.Intent
 import android.location.Location
 import android.location.LocationListener
 import android.location.LocationManager
@@ -21,11 +19,9 @@ import com.gtreb.healthydog.R
 import com.gtreb.healthydog.common.implementations.TimberMonitor
 import com.gtreb.healthydog.common.navigation.IDispatcherService
 import com.gtreb.healthydog.common.presentation.CustomViewModel
-import com.gtreb.healthydog.modules.veterinary.data.VeterinaryRepository
 import com.gtreb.healthydog.modules.veterinary.domain.VeterinaryPlace
 import com.gtreb.healthydog.utils.Constants
 import com.gtreb.healthydog.utils.Constants.DEFAULT_RADIUS
-import com.gtreb.healthydog.utils.SettingsAction
 import com.gtreb.healthydog.utils.bitmapDescriptorFromVector
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
@@ -33,7 +29,7 @@ import kotlinx.coroutines.withContext
 
 class VeterinaryFragmentViewModel(
     private val dispatcher: IDispatcherService,
-    private val googleRepository: VeterinaryRepository,
+    private val googleRepository: IVeterinaryRepository,
     private val logger: TimberMonitor,
     application: Application,
 ) : CustomViewModel(application),
@@ -41,8 +37,9 @@ class VeterinaryFragmentViewModel(
 
     lateinit var googleMap: GoogleMap
     private lateinit var lastKnownLocation: Location
-    lateinit var gpsVisibility: MutableLiveData<Int>
-    lateinit var mapAndListVisibility: MutableLiveData<Int>
+    var goToSettings = MutableLiveData(true)
+    var gpsVisibility = MutableLiveData<Int>()
+    var mapAndListVisibility = MutableLiveData<Int>()
     private lateinit var locationManager: LocationManager
 
     private val defaultLocation = LatLng(-33.8523341, 151.2106085)
@@ -74,16 +71,6 @@ class VeterinaryFragmentViewModel(
         googleMap.moveCamera(CameraUpdateFactory.newLatLng(position))
     }
 
-    fun goToGpsSettings() {
-        val i = Intent(SettingsAction.GPS.value)
-        i.flags = Intent.FLAG_ACTIVITY_NEW_TASK
-        try {
-            getApplication<Application>().applicationContext.startActivity(i)
-        } catch (e: ActivityNotFoundException) {
-            logger.logE(e.message.toString(), e)
-        }
-    }
-
     override fun onLocationChanged(location: Location) {
         lastKnownLocation = location
         updatePosition()
@@ -94,6 +81,9 @@ class VeterinaryFragmentViewModel(
             getApplication<Application>().applicationContext.getSystemService(Context.LOCATION_SERVICE) as LocationManager
     }
 
+    fun goToSettings() {
+        goToSettings.postValue(goToSettings.value?.not())
+    }
 
     fun addMarkerForVet(veterinaryPlace: VeterinaryPlace) {
         val position =

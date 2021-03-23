@@ -1,7 +1,9 @@
 package com.gtreb.healthydog.modules.veterinary.presentation
 
 import android.Manifest
+import android.content.ActivityNotFoundException
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.activity.result.ActivityResultLauncher
@@ -17,6 +19,7 @@ import com.gtreb.healthydog.common.presentation.CustomFragment
 import com.gtreb.healthydog.databinding.VeterinaryFragmentBinding
 import com.gtreb.healthydog.modules.veterinary.VeterinaryModule
 import com.gtreb.healthydog.modules.veterinary.domain.VeterinaryPlace
+import com.gtreb.healthydog.utils.SettingsAction
 import kotlinx.android.synthetic.main.veterinary_fragment.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.koin.android.viewmodel.ext.android.sharedViewModel
@@ -56,6 +59,18 @@ class VeterinaryFragment : CustomFragment<VeterinaryFragmentBinding>(), OnMapRea
         mapView.onCreate(savedInstanceState)
         mapView.onResume()
         mapView.getMapAsync(this)
+
+
+        viewModelVeterinary.goToSettings.observe(lifecycleOwner) {
+            try {
+                requireActivity().runOnUiThread {
+                    startActivity(Intent(SettingsAction.GPS.value))
+                }
+            } catch (e: ActivityNotFoundException) {
+                logger.logE(e.message.toString(), e)
+            }
+
+        }
     }
 
     private fun initPermissionsHandler() {
